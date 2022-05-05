@@ -18,7 +18,7 @@ use App\Http\Controllers\CategoriesController;
 */
 
 Route::get('/', function () {
-    return view('master');
+    return view('index');
 });
 
 Route::resource('/users', UsersController::class);
