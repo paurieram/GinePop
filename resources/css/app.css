@@ -1,0 +1,38 @@
+footer {
+    /* position: -webkit-sticky;
+    position: sticky; */
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: white;
+    color: black;
+    text-align: center;
+    margin-top: auto;
+    flex-shrink: 0;
+}
+.social-footer-icons {
+    list-style-type: none; 
+    margin-bottom: 0;
+}
+li {
+    float: right; 
+    text-align: center; 
+    width: 2em; 
+}
+ul li a .fa-brands,ul li a .fa-solid { 
+    color:grey;
+}
+ul li a i {
+    font-size: 1.25em;
+} 
+ul li a:hover i { 
+    transform: translateY(-20%) !important; 
+    color:green;
+}
+#btnvote:hover, #btnupload:hover {
+    transform: scale(1.05, 1.05) !important;
+}
+#links a:hover{
+    transform: translateY(-20%) !important;
+    color: red;
+}
