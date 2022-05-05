@@ -1,32 +1,37 @@
-<x-guest-layout>
-    <x-jet-authentication-card>
-        <x-slot name="logo">
-            <x-jet-authentication-card-logo />
-        </x-slot>
+@extends('master')
 
+@section('body')
+<div class="col-lg-4 offset-lg-4 col-md-8 offset-md-2 col-10 offset-1 my-5" style="border: solid 2px #84c236; border-radius: 10px;">
+        <x-slot name="logo"></x-slot>
         <x-jet-validation-errors class="mb-4" />
 
-        <form method="POST" action="{{ route('register') }}">
+        <h1 class="px-5 pt-4 h1"><b>Registre't</b></h1>
+        <form method="POST" action="{{ route('register') }}" class="px-5 pt-4">
             @csrf
-
-            <div>
-                <x-jet-label for="name" value="{{ __('Name') }}" />
-                <x-jet-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
+            <div class="form-floating mb-3">
+                <x-jet-input id="name" class="form-control" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
+                <x-jet-label for="name" value="{{ __('Nom') }}" />
             </div>
 
-            <div class="mt-4">
+            <div class="form-floating mb-3">
+                <x-jet-input id="surname" class="form-control" type="text" name="surname" :value="old('surname')" required autofocus autocomplete="surname" />
+                <x-jet-label for="surname" value="{{ __('Cognom') }}" />
+            </div>
+
+            <div  class="form-floating mb-3">
+                <x-jet-input id="email" class="form-control" type="email" name="email" :value="old('email')" required />
                 <x-jet-label for="email" value="{{ __('Email') }}" />
-                <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
             </div>
+            <div class="row g-1">
+                <div class="form-floating col">
+                    <x-jet-input id="password" class="form-control" type="password" name="password" required autocomplete="new-password" />
+                    <x-jet-label for="password" value="{{ __('Password') }}" />
+                </div>
 
-            <div class="mt-4">
-                <x-jet-label for="password" value="{{ __('Password') }}" />
-                <x-jet-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
-            </div>
-
-            <div class="mt-4">
-                <x-jet-label for="password_confirmation" value="{{ __('Confirm Password') }}" />
-                <x-jet-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password" />
+                <div class="form-floating col">
+                    <x-jet-input id="password_confirmation" class="form-control" type="password" name="password_confirmation" required autocomplete="new-password" />
+                    <x-jet-label for="password_confirmation" value="{{ __('Confirm Password') }}" />
+                </div>
             </div>
 
             @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
@@ -46,7 +51,7 @@
                 </div>
             @endif
 
-            <div class="flex items-center justify-end mt-4">
+            <div class="flex items-center justify-end my-4">
                 <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
                     {{ __('Already registered?') }}
                 </a>
@@ -56,5 +61,5 @@
                 </x-jet-button>
             </div>
         </form>
-    </x-jet-authentication-card>
-</x-guest-layout>
+</div>
+@endsection
