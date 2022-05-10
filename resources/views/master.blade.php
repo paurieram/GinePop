@@ -15,21 +15,26 @@
     <!-- Details -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <link rel="stylesheet" href="/css/app.css">
+    <link rel="stylesheet" href="/css/style.css">
     <script src="/js/app.js"></script>
     <title>GinePop</title>
 </head>
 
 <body class="d-flex flex-column min-vh-100">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white">
         <div class="container-fluid">
             <a class="navbar-brand " href="/"><img src="/favicon.ico" alt="GinePop"></a>
-            <form class="d-flex col-lg-8 col-md-8 col-sm-8">
-                <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+            <form class="d-flex col-xl-9 col-lg-8 col-md-9 col-7">
+                <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+                <a href="#"><svg class="searchIcon" width="2.2em" height="2.2em" class="icon icon--search" viewBox="0 0 480 480">
+                        <path transform="rotate(-45, 328, 222)" fill="none" stroke="grey" stroke-width="50" stroke-linecap="round" d="M0,10 m250,250 a110,110 0 1,0-1,0 l0,140"></path>
+                    </svg>
+                </a>
             </form>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
                 <ul class="navbar-nav mb-2 mb-lg-0">
                     <li class="nav-item w-auto mx-2">
                         <a class="nav-link btn btn-outline-success" href="#">Pujar Producte</a>
