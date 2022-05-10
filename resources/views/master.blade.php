@@ -15,6 +15,7 @@
     <!-- Details -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <link rel="stylesheet" href="/css/app.css">
+    <link rel="stylesheet" href="/css/style.css">
     <script src="/js/app.js"></script>
     <title>GinePop</title>
 </head>
