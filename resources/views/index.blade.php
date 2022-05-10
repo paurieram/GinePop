@@ -2,7 +2,7 @@
 
 @section('body')
 <div class="col-lg-10 offset-lg-1 col-md-8 offset-md-2 my-5">
-    <h1 class="d-flex justify-content-center"><b>Categoríes</b></h1>
+    <h1 class="d-flex justify-content-center h1"><b>Categoríes</b></h1>
     <div class="container mt-4">
         <div class="row row-cols-lg-2 row-cols-md-1 row-cols-1">
             <div class="col">

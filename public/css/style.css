@@ -14,7 +14,7 @@ footer {
     list-style-type: none; 
     margin-bottom: 0;
 }
-li {
+.social-footer-icons li {
     float: right; 
     text-align: center; 
     width: 2em; 
