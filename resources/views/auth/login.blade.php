@@ -1,7 +1,7 @@
 @extends('master')
 
 @section('body')
-<div class="col-lg-6 offset-lg-3 col-md-8 offset-md-2 col-10 offset-1 my-5" style="border: solid 2px #84c236; border-radius: 10px;">
+<div class="col-lg-6 offset-lg-3 col-md-8 offset-md-2 col-10 offset-1 my-5" style="box-shadow: 0px 0px 5px #000; border-radius: 10px; background-color: white; ">
     <!-- <x-slot name="logo">
                 <x-jet-authentication-card-logo />
             </x-slot> -->
@@ -18,12 +18,12 @@
             @csrf
 
             <div class="form-floating mb-3">
-                <x-jet-input id="email" class="form-control" type="email" name="email" :value="old('email')" required autofocus />
+                <x-jet-input id="email" class="form-control" style="box-shadow: 0px 0px 3px #aaa !important" type="email" name="email" :value="old('email')" required autofocus />
                 <x-jet-label for="email" value="{{ __('Email') }}" />
             </div>
 
             <div class="form-floating mb-3">
-                <x-jet-input id="password" class="form-control" type="password" name="password" required autocomplete="current-password" />
+                <x-jet-input id="password" class="form-control" style="box-shadow: 0px 0px 3px #aaa !important" type="password" name="password" required autocomplete="current-password" />
                 <x-jet-label for="password" value="{{ __('Password') }}" />
             </div>
 

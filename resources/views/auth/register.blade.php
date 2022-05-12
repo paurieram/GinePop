@@ -1,34 +1,34 @@
 @extends('master')
 
 @section('body')
-<div class="col-lg-6 offset-lg-3 col-md-8 offset-md-2 col-10 offset-1 my-5" style="border: solid 2px #84c236; border-radius: 10px;">
+<div class="col-lg-6 offset-lg-3 col-md-8 offset-md-2 col-10 offset-1 my-5" style="border-radius: 10px; background-color: white; box-shadow: 0px 0px 5px #000;">
 
     <h1 class="px-5 pt-4 h1"><b>Registre't</b></h1>
 
     <form method="POST" action="{{ route('register') }}" class="px-5 pt-4">
         @csrf
         <div class="form-floating mb-3">
-            <x-jet-input id="name" class="form-control" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
+            <x-jet-input id="name" class="form-control" style="box-shadow: 0px 0px 3px #aaa !important" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
             <x-jet-label for="name" value="{{ __('Nom') }}" />
         </div>
 
         <div class="form-floating mb-3">
-            <x-jet-input id="surname" class="form-control" type="text" name="surname" :value="old('surname')" required autofocus autocomplete="surname" />
+            <x-jet-input id="surname" class="form-control" style="box-shadow: 0px 0px 3px #aaa !important" type="text" name="surname" :value="old('surname')" required autofocus autocomplete="surname" />
             <x-jet-label for="surname" value="{{ __('Cognom') }}" />
         </div>
 
         <div class="form-floating mb-3">
-            <x-jet-input id="email" class="form-control" type="email" name="email" :value="old('email')" required />
+            <x-jet-input id="email" class="form-control" style="box-shadow: 0px 0px 3px #aaa !important" type="email" name="email" :value="old('email')" required />
             <x-jet-label for="email" value="{{ __('Email') }}" />
         </div>
         <div class="row g-1">
             <div class="form-floating col">
-                <x-jet-input id="password" class="form-control" type="password" name="password" required autocomplete="new-password" />
+                <x-jet-input id="password" class="form-control" style="box-shadow: 0px 0px 3px #aaa !important" type="password" name="password" required autocomplete="new-password" />
                 <x-jet-label for="password" value="{{ __('Password') }}" />
             </div>
 
             <div class="form-floating col">
-                <x-jet-input id="password_confirmation" class="form-control" type="password" name="password_confirmation" required autocomplete="new-password" />
+                <x-jet-input id="password_confirmation" class="form-control" style="box-shadow: 0px 0px 3px #aaa !important" type="password" name="password_confirmation" required autocomplete="new-password" />
                 <x-jet-label for="password_confirmation" value="{{ __('Confirm Password') }}" />
             </div>
         </div>
