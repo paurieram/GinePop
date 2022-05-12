@@ -46,15 +46,7 @@ body{
     border-radius: 21px;
     background-color: #eceff1;
 }
-.card{
-    height: 420px;
-    font-size: .875rem;
-    border-radius: 10px;
-    background-color: #fff;
-    overflow: hidden;
-    transition: all .15s ease;
-    width: 100%;
-}
+
 .btn {
     border-radius: 21px;
     padding: 8px 16px 8px 16px !important;
