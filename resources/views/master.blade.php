@@ -37,7 +37,7 @@
             <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
                 <ul class="navbar-nav mb-2 mb-lg-0">
                     <li class="nav-item w-auto mx-2">
-                        <a class="nav-link btn btn-outline-success" href="#">Pujar Producte</a>
+                        <a class="nav-link btn btn-outline-success" href="/products">Pujar Producte</a>
                     </li>
                     <li class="nav-item w-auto mx-2">
                         <a class="nav-link btn btn-outline-success" href="/login">Login</a>
@@ -46,7 +46,7 @@
             </div>
         </div>
     </nav>
-
+    @livewire('navigation-menu')
     <h2>@yield('titulo')</h2>
     @section('body')
     @show
