@@ -34,6 +34,7 @@
             </ul>
         </div>
     </footer>
+    <script src="/js/img.js"></script>
 </body>
 
 </html>

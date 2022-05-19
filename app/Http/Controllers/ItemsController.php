@@ -24,7 +24,7 @@ class ItemsController extends Controller
      */
     public function create()
     {
-        //
+        return view('addProduct', ['items' => items::all()]);
     }
 
     /**

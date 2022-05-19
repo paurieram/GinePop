@@ -23,7 +23,7 @@ Route::get('/', function () {
 
 // Route::resource('/users', UsersController::class);
 // Route::resource('/logs', LogsListController::class);
-// Route::resource('/items', ItemsController::class);
+Route::resource('/items', ItemsController::class);
 // Route::resource('/categories', CategoriesController::class);
 
 // Route::get('/login', [UsersController::class, 'showFormLogin']);
