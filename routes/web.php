@@ -21,6 +21,10 @@ Route::get('/', function () {
     return view('index');
 });
 
+Route::get('/product-view', function () {
+    return view('product-view');
+});
+
 // Route::resource('/users', UsersController::class);
 // Route::resource('/logs', LogsListController::class);
 Route::resource('/items', ItemsController::class);
