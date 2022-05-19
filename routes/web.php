@@ -30,16 +30,18 @@ Route::resource('/items', ItemsController::class);
 // Route::post('/login', [UsersController::class, 'login']);
 
 
-Route::fallback(function () {
-    return redirect('/');
-});
-
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
     'verified'
 ])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+    Route::get('/index', function () {
+        return redirect('/');
+    })->name('index');
+    Route::get('/products', function () {
+        return view('products');
+    })->name('products');
+});
+Route::fallback(function () {
+    return redirect('/');
 });
