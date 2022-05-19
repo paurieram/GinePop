@@ -36,11 +36,11 @@
 
             <x-jet-validation-errors class="my-3" />
             <div class="flex items-center justify-end my-4">
-                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('register') }}">
+                <a class="underline me-3 text-sm text-gray-600 hover:text-gray-900" href="{{ route('register') }}">
                     Create a new account
                 </a>
                 @if (Route::has('password.request'))
-                <a class="underline ml-4 text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
+                <a class="underline me-3 text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
                     {{ __('Forgot your password?') }}
                 </a>
                 @endif
