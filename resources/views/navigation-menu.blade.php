@@ -11,7 +11,7 @@
                 </div>
             </div>
             <!-- Search bar -->
-            <form class="d-flex col-xl-9 col-lg-8 col-md-9 col-7 py-2 m-1">
+            <form id="searchform" class="d-flex col-xl-9 col-lg-8 col-md-9 col-9 py-2 m-1">
                 <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
                 <a><svg class="searchIcon" width="2.2em" height="2.2em" class="icon icon--search" viewBox="0 0 480 480">
                         <path transform="rotate(-45, 328, 222)" fill="none" stroke="grey" stroke-width="50" stroke-linecap="round" d="M0,10 m250,250 a110,110 0 1,0-1,0 l0,140"></path>
@@ -102,7 +102,6 @@
             </div>
         </div>
     </div>
-
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
@@ -129,9 +128,18 @@
             @endif
 
             <div class="mt-3 space-y-1">
+                <div class="block px-4 py-2 text-xs text-gray-400">
+                    {{ __('Gestionar Productes') }}
+                </div>
+                <x-jet-dropdown-link href="{{ route('products') }}">
+                    {{ __('Pujar Producte') }}
+                </x-jet-dropdown-link>
                 <!-- Account Management -->
+                <div class="block px-4 py-2 text-xs text-gray-400">
+                    {{ __('Gestionar Compte') }}
+                </div>
                 <x-jet-responsive-nav-link href="{{ route('profile.show') }}" :active="request()->routeIs('profile.show')">
-                    {{ __('Profile') }}
+                    {{ __('Perfil') }}
                 </x-jet-responsive-nav-link>
 
                 @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
@@ -145,7 +153,7 @@
                     @csrf
 
                     <x-jet-responsive-nav-link href="{{ route('logout') }}" @click.prevent="$root.submit();">
-                        {{ __('Log Out') }}
+                        {{ __('Sortir') }}
                     </x-jet-responsive-nav-link>
                 </form>
 
