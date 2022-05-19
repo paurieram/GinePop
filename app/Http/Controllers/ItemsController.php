@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\categories;
 use App\Models\items;
 use Illuminate\Http\Request;
 
@@ -24,7 +25,7 @@ class ItemsController extends Controller
      */
     public function create()
     {
-        return view('addProduct', ['items' => items::all()]);
+        return view('addProduct',  ['categories' => Categories::all()]);
     }
 
     /**
@@ -35,7 +36,8 @@ class ItemsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        items::create($request->all());
+        return redirect('/items');
     }
 
     /**

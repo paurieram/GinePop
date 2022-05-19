@@ -7,19 +7,28 @@
         @csrf
         <div class="row g-1">
             <div class="form-floating mb-3 col">
-                <x-jet-input id="title" class="form-control" style="box-shadow: 0px 0px 3px #aaa !important" type="text" name="title" :value="old('name')" required autofocus autocomplete="title" />
-                <x-jet-label for="title" value="{{ __('Títol') }}" />
+                <x-jet-input id="name" class="form-control" style="box-shadow: 0px 0px 3px #aaa !important" type="text" name="title" :value="old('name')" required autofocus autocomplete="names" />
+                <x-jet-label for="name" value="{{ __('Títol') }}" />
             </div>
             <div class="form-floating mb-3 col">
-                <x-jet-input id="preu" class="form-control" style="box-shadow: 0px 0px 3px #aaa !important" type="number" name="preu" :value="old('preu')" required autofocus autocomplete="preu" />
-                <x-jet-label for="preu" value="{{ __('Preu') }}" />
+                <x-jet-input id="price" class="form-control" style="box-shadow: 0px 0px 3px #aaa !important" type="number" name="price" :value="old('price')" required autofocus autocomplete="price" />
+                <x-jet-label for="price" value="{{ __('Preu') }}" />
             </div>
+        </div>
+        <div class="form-floating mb-3">
+            <select class="form-select" id="floatingSelect" aria-label="Floating label select example" style="box-shadow: 0px 0px 3px #aaa !important">
+                <option selected>Selecciona categoria</option>
+                    @foreach ($categories as $category)
+                        <option value="{{$category->id}}">{{$category->name}}</option>
+                    @endforeach
+            </select>
+            <label for="floatingSelect">Categoria</label>
         </div>
         <div class="form-floating mb-3">
             <textarea id="description" class="form-control" style="box-shadow: 0px 0px 3px #aaa !important" name="description" required autofocus autocomplete="description"></textarea>
             <x-jet-label for="description" value="{{ __('Descripció') }}" />
         </div>
-        <p class="mb-1">Afegeix les imatges desitjades (max 8)</p>
+        <p class="mb-1">Afegeix les imatges desitjades (max. 8)</p>
         <div class="mb-3">
             <input accept="image/*" class="imgInp form-control" type='file' id="imgInp0" />
             <input accept="image/*" class="imgInp form-control" type='file' id="imgInp1" style="visibility:hidden; position:absolute;" />
@@ -38,9 +47,10 @@
         </div>
         <div class="flex items-center justify-end my-4">
             <x-jet-button class="ml-4 nav-link btn btn-outline-success">
-                {{ __('Register') }}
+                {{ __('Publicar') }}
             </x-jet-button>
         </div>
+        <input type="hidden" name="id_seller" value="{{Auth::user()->id}}">
     </form>
 </div>
 @endsection
