@@ -19,8 +19,8 @@
             <textarea id="description" class="form-control" style="box-shadow: 0px 0px 3px #aaa !important" name="description" required autofocus autocomplete="description"></textarea>
             <x-jet-label for="description" value="{{ __('Descripció') }}" />
         </div>
+        <p class="mb-1">Afegeix les imatges desitjades (max 8)</p>
         <div class="mb-3">
-            <label for="imgInp" class="form-label">Default file input example</label>
             <input accept="image/*" class="imgInp form-control" type='file' id="imgInp0" />
             <input accept="image/*" class="imgInp form-control" type='file' id="imgInp1" style="visibility:hidden; position:absolute;" />
             <input accept="image/*" class="imgInp form-control" type='file' id="imgInp2" style="visibility:hidden; position:absolute;" />
@@ -31,6 +31,15 @@
             <input accept="image/*" class="imgInp form-control" type='file' id="imgInp7" style="visibility:hidden; position:absolute;" />
         </div>
         <div id="blah" style="background-color: #e4ebe6; border-radius:10px;" class="my-3">
+        </div>
+        <div class="form-floating mb-3 col">
+            <x-jet-input id="location" class="form-control" style="box-shadow: 0px 0px 3px #aaa !important" type="text" name="location" :value="old('location')" required autofocus autocomplete="location" />
+            <x-jet-label for="location" value="{{ __('Ubicació') }}" />
+        </div>
+        <div class="flex items-center justify-end my-4">
+            <x-jet-button class="ml-4 nav-link btn btn-outline-success">
+                {{ __('Register') }}
+            </x-jet-button>
         </div>
     </form>
 </div>
