@@ -1,6 +1,11 @@
 let images = document.getElementsByClassName("imgInp");
 for (element of images) {
     element.onchange = evt => {
+        var $fileUpload = $("input[type='file']");
+        if (parseInt($fileUpload.get(0).files.length)>8){
+            alert("You can only upload a maximum of 8 files");
+            return;
+        }
         const [files] = evt.target.files;
         if (files) {
             let img = document.createElement('img');
@@ -15,6 +20,7 @@ for (element of images) {
         }
     }
 }
+
 
 
 

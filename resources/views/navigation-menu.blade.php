@@ -46,7 +46,7 @@
                             <div class="block px-4 py-2 text-xs text-gray-400">
                                 {{ __('Gestionar Productes') }}
                             </div>
-                            <x-jet-dropdown-link href="{{ route('products') }}">
+                            <x-jet-dropdown-link href="{{ route('items.create') }}">
                                 {{ __('Pujar Producte') }}
                             </x-jet-dropdown-link>
 
