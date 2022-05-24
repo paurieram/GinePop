@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\categories;
+use App\Models\imgs;
 use App\Models\items;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Date;
 
 class ItemsController extends Controller
 {
@@ -25,7 +27,7 @@ class ItemsController extends Controller
      */
     public function create()
     {
-        return view('addProduct',  ['categories' => Categories::all()]);
+        return view('addProduct',  ['categories' => Categories::all(), 'date' => date('Y-m-d h:m:s', strtotime(' + 2 years'))]);
     }
 
     /**
@@ -36,7 +38,15 @@ class ItemsController extends Controller
      */
     public function store(Request $request)
     {
-        items::create($request->all());
+        $item = items::create($request->all());
+
+        for($i = 0; $request->hasFile('url'.$i); $i++) {
+            $ruta = $request->file('url'.$i)->storePublicly('img', 'public');
+            
+            imgs::create(["url" => $ruta, "id_item" => $item->id]);
+            echo $i;
+        }
+
         return redirect('/items');
     }
 

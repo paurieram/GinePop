@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\Schema;
 
 class CreateItemsTable extends Migration
@@ -22,7 +23,7 @@ class CreateItemsTable extends Migration
             $table->integer('state')->default(0);
             $table->foreignId('id_category')->constrained('categories')->onUpdate('cascade')->onDelete('restrict');
             $table->foreignId('id_seller')->constrained('users')->onUpdate('cascade')->onDelete('restrict');
-            $table->foreignId('id_buyer')->constrained('users')->onUpdate('cascade')->onDelete('restrict')->nullable();
+            $table->foreignId('id_buyer')->nullable()->default(null);
             $table->date('expiration_date');
             $table->integer('views')->default(0);
             $table->timestamps();
