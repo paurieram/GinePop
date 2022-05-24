@@ -2232,7 +2232,7 @@ body{
   border-radius: 21px;
   background-color: #eceff1;
 }
-.card{
+.card-products{
   height: 350px;
   font-size: .875rem;
   border-radius: 10px;
@@ -2266,4 +2266,7 @@ body{
 }
 a:hover{
   color: #000;
+}
+body {
+  overflow-x: hidden;
 }

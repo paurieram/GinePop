@@ -55,7 +55,7 @@
                             <div class="block px-4 py-2 text-xs text-gray-400">
                                 {{ __('Productes') }}
                             </div>
-                            <x-jet-dropdown-link href="{{ route('items-add') }}">
+                            <x-jet-dropdown-link href="{{ route('items.create') }}">
                                 {{ __('Pujar Producte') }}
                             </x-jet-dropdown-link>
                             <x-jet-dropdown-link href="{{ route('items') }}">
@@ -139,7 +139,7 @@
                 <div class="block px-4 py-2 text-xs text-gray-400">
                     {{ __('Productes') }}
                 </div>
-                <x-jet-dropdown-link href="{{ route('items-add') }}">
+                <x-jet-dropdown-link href="{{ route('items.create') }}">
                     {{ __('Pujar Producte') }}
                 </x-jet-dropdown-link>
                 <x-jet-dropdown-link href="{{ route('items') }}">
