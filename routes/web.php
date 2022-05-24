@@ -26,7 +26,7 @@ Route::get('/', function () {
 
 // Route::resource('/users', UsersController::class);
 // Route::resource('/logs', LogsListController::class);
-Route::resource('/items', ItemsController::class);
+// Route::resource('/items', ItemsController::class);
 // Route::resource('/categories', CategoriesController::class);
 
 Route::middleware([
@@ -39,9 +39,8 @@ Route::middleware([
     Route::get('/index', function () {
         return redirect('/');
     })->name('index');
-    Route::get('/items', function () {
-        return view('items');
-    })->name('items');
+    Route::resource('/items', ItemsController::class);
+    Route::get('/items', [ItemsController::class, 'index'])->name('items');
     Route::get('/panel', function () {
         return view('panel');
     })->name('panel');
