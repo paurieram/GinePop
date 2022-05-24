@@ -10,4 +10,12 @@ class items extends Model
     use HasFactory;
     protected $table = 'items';
     protected $fillable = ['name', 'price','description', 'location','id_category', 'id_seller', 'expiration_date'];
+
+    public function imatges () {
+        return $this->hasMany(imgs::class, 'id_item', 'id');
+    }
+
+    public function portrait () {
+        return $this->hasOne(imgs::class, 'id_item', 'id');
+    }
 }

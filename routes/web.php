@@ -41,6 +41,7 @@ Route::middleware([
     // Route::get('/items', function () {
     //     return view('items');
     // })->name('items');
+
     Route::get('/panel', function () {
         return view('panel');
     })->name('panel');

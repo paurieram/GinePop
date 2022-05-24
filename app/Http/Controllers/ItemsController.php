@@ -6,7 +6,6 @@ use App\Models\categories;
 use App\Models\imgs;
 use App\Models\items;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Date;
 
 class ItemsController extends Controller
 {
@@ -17,7 +16,7 @@ class ItemsController extends Controller
      */
     public function index()
     {
-        return view('items');
+        return view('items', ['items' => items::all()]);
     }
 
     /**
