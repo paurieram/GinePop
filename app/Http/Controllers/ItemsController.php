@@ -17,7 +17,7 @@ class ItemsController extends Controller
      */
     public function index()
     {
-        //
+        return view('items');
     }
 
     /**
@@ -27,7 +27,7 @@ class ItemsController extends Controller
      */
     public function create()
     {
-        return view('addProduct',  ['categories' => Categories::all(), 'date' => date('Y-m-d h:m:s', strtotime(' + 2 years'))]);
+        return view('items-add',  ['categories' => Categories::all(), 'date' => date('Y-m-d h:m:s', strtotime(' + 2 years'))]);
     }
 
     /**
@@ -56,9 +56,11 @@ class ItemsController extends Controller
      * @param  \App\Models\items  $items
      * @return \Illuminate\Http\Response
      */
-    public function show(items $items)
+    public function show(items $item)
     {
-        //
+        // return $item;
+        // return view('items-view');
+        // return view('products-view', ['id' => $request]);
     }
 
     /**
@@ -94,4 +96,5 @@ class ItemsController extends Controller
     {
         //
     }
+
 }

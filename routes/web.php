@@ -22,36 +22,32 @@ Route::get('/', function () {
     return view('index');
 });
 
-
-
-// Route::resource('/users', UsersController::class);
-// Route::resource('/logs', LogsListController::class);
 Route::resource('/items', ItemsController::class);
-// Route::resource('/categories', CategoriesController::class);
+Route::resource('/logs', LogsListController::class);
+Route::resource('/categories', CategoriesController::class);
+
 
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
     'verified'
 ])->group(function () {
-    // Route::post('/items',[ItemsController::class, '']);
+    // Route::get('/items/{item}',[ItemsController::class, 'show']);
+    Route::get('/items',[ItemsController::class, 'index'])->name('items');
     // Route::post('/pais',[ItemsController::class, '']);
     Route::get('/index', function () {
         return redirect('/');
     })->name('index');
-    Route::get('/items', function () {
-        return view('items');
-    })->name('items');
+    // Route::get('/items', function () {
+    //     return view('items');
+    // })->name('items');
     Route::get('/panel', function () {
         return view('panel');
     })->name('panel');
-    Route::get('/items/add', function () {
-        return view('items-add');
-    })->name('items-add');
-    Route::get('/items/view/{id}', function (Request $request) {
-        return view('items-view');
+    // Route::get('/items/view/{id}', function (Request $request) {
+        // return view('items-view');
         // return view('products-view', ['id' => $request]);
-    })->name('view');
+    // })->name('view');
 });
 Route::fallback(function () {
     return redirect('/');

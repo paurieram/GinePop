@@ -4,7 +4,7 @@
 <div class="col-lg-8 offset-lg-2 col-md-8 offset-md-2 col-10 offset-1 my-5">
     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 col-10 col-md-12 col-lg-12 offset-1 offset-md-0 offset-lg-0 g-4">
         <div class="col">
-            <a href="/items/view/1">
+            <a href="/items/1">
                 <div class="card">
                     <img src="img/1.png" class="card-img-top" alt="...">
                     <div class="card-body">
