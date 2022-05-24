@@ -26,7 +26,8 @@ class AddMoreFieldsToUsersTable extends Migration
                 'name' => 'admin',
                 'email' => 'informaticaescola@ginebro.cat',
                 'password' => '$2y$10$BFpXSg4b4UFYfMeCZ1L4jugMpgeKTqYd8OAiGX7JiNkwX4Wb08kZ2',
-                'surname' => 'admin'
+                'surname' => 'admin',
+                'state' => '3'
             )   
         );
     }
