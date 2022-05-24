@@ -2264,7 +2264,9 @@ body{
 .card-text{
   font-size: 1.25rem;
 }
-
+a:hover{
+  color: #000;
+}
 body {
   overflow-x: hidden;
 }

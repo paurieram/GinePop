@@ -41,13 +41,25 @@
                             </span>
                             @endif
                         </x-slot>
-
+                        
                         <x-slot name="content">
+                            @if (Auth::user()->state == 3)
+                                <div class="block px-4 py-2 text-xs text-gray-400">
+                                    {{ __('Administrador') }}
+                                </div>
+                                <x-jet-dropdown-link href="{{ route('panel') }}">
+                                    {{ __("Panell d'administrador") }}
+                                </x-jet-dropdown-link>
+                            @endif   
+
                             <div class="block px-4 py-2 text-xs text-gray-400">
-                                {{ __('Gestionar Productes') }}
+                                {{ __('Productes') }}
                             </div>
                             <x-jet-dropdown-link href="{{ route('items.create') }}">
                                 {{ __('Pujar Producte') }}
+                            </x-jet-dropdown-link>
+                            <x-jet-dropdown-link href="{{ route('items') }}">
+                                {{ __('Veure Productes') }}
                             </x-jet-dropdown-link>
 
                             <div class="border-t border-gray-100"></div>
@@ -104,12 +116,8 @@
     </div>
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
-        <div class="pt-2 pb-3 space-y-1">
-            <x-jet-responsive-nav-link href="{{ route('products') }}" :active="request()->routeIs('products')">
-                {{ __('products') }}
-            </x-jet-responsive-nav-link>
-        </div>
 
+        
         <!-- Responsive Settings Options -->
         <div class="pt-4 pb-1 border-t border-gray-200">
             @if(Auth::user())
@@ -129,14 +137,17 @@
 
             <div class="mt-3 space-y-1">
                 <div class="block px-4 py-2 text-xs text-gray-400">
-                    {{ __('Gestionar Productes') }}
+                    {{ __('Productes') }}
                 </div>
-                <x-jet-dropdown-link href="{{ route('products') }}">
+                <x-jet-dropdown-link href="{{ route('items.create') }}">
                     {{ __('Pujar Producte') }}
+                </x-jet-dropdown-link>
+                <x-jet-dropdown-link href="{{ route('items') }}">
+                    {{ __('Veure Productes') }} 
                 </x-jet-dropdown-link>
                 <!-- Account Management -->
                 <div class="block px-4 py-2 text-xs text-gray-400">
-                    {{ __('Gestionar Compte') }}
+                    {{ __('Compte') }}
                 </div>
                 <x-jet-responsive-nav-link href="{{ route('profile.show') }}" :active="request()->routeIs('profile.show')">
                     {{ __('Perfil') }}

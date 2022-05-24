@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
 
 class AddMoreFieldsToUsersTable extends Migration
 {
@@ -20,8 +21,16 @@ class AddMoreFieldsToUsersTable extends Migration
             $table->string('o_contact')->nullable();
             $table->integer('state')->default(0);
         });
+        DB::table('users')->insert(
+            array(
+                'name' => 'admin',
+                'email' => 'informaticaescola@ginebro.cat',
+                'password' => '$2y$10$BFpXSg4b4UFYfMeCZ1L4jugMpgeKTqYd8OAiGX7JiNkwX4Wb08kZ2',
+                'surname' => 'admin',
+                'state' => '3'
+            )   
+        );
     }
-
     /**
      * Reverse the migrations.
      *
