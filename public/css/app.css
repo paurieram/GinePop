@@ -2264,3 +2264,7 @@ body{
 .card-text{
   font-size: 1.25rem;
 }
+
+body {
+  overflow-x: hidden;
+}
