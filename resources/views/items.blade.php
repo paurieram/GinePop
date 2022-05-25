@@ -6,7 +6,7 @@
         @foreach ($items as $item)
         
         <div class="col">
-            <a href="/items/1">
+            <a href="/items/{{ $item->id }}">
                 <div class="card">
                     <img src="{{ $item->portrait->url }}" class="card-img-top" alt="{{ $item->name}}">
                     <div class="card-body">
