@@ -63,7 +63,11 @@
             /* Fading animation */
             .fade {
                 animation-name: fade;
-                animation-duration: 1.5s;
+                animation-duration: 0.5s;
+            }
+
+            .fade:not(.show) {
+                opacity: 1 !important;
             }
 
             @keyframes fade {
@@ -85,7 +89,7 @@
                             <span id="seller" class="h3 card-title justify-content-start">Seller</span>
                             <button class="ms-auto btn">Contacte</button>
                         </div>
-                        <div class="d-flex justify-content-center">
+                        <div class="d-flex justify-content-center" style="background-color: #1a1a1a;">
                             <!-- <img class="product-img img-fluid" id="product-img" src="https://estaticos-cdn.elperiodico.com/clip/c0f28253-cee9-4301-8e24-5e7032beb153_alta-libre-aspect-ratio_default_0.jpg" class="card-img-top" alt="..."> -->
 
                             <!-- Slideshow container -->
@@ -96,7 +100,7 @@
                                 @foreach ($imatges as $imatge)
                                 @if ($imatge->id_item == $items->id)
                                 <div class="mySlides fade">
-                                    <img src="../../{{$imatge->url}}" style="width:100%">
+                                    <img src="../../{{$imatge->url}}" style="width:100%; max-height: 366.233px !important;">
                                 </div>
                                 @endif
                                 @endforeach
