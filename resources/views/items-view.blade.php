@@ -11,8 +11,29 @@
                             <span id="seller" class="h3 card-title justify-content-start">Seller</span>
                             <button class="ms-auto btn">Contacte</button>
                         </div>
-                        <div class="d-flex justify-content-center">
-                            <img class="product-img img-fluid" id="product-img" src="https://estaticos-cdn.elperiodico.com/clip/c0f28253-cee9-4301-8e24-5e7032beb153_alta-libre-aspect-ratio_default_0.jpg" class="card-img-top" alt="...">
+                        <div class="d-flex justify-content-center" style="background-color: #1a1a1a;">
+                            <!-- <img class="product-img img-fluid" id="product-img" src="https://estaticos-cdn.elperiodico.com/clip/c0f28253-cee9-4301-8e24-5e7032beb153_alta-libre-aspect-ratio_default_0.jpg" class="card-img-top" alt="..."> -->
+
+                            <!-- Slideshow container -->
+                            <div class="slideshow-container">
+
+                                <!-- Full-width images with number and caption text -->
+
+                                @foreach ($imatges as $imatge)
+                                @if ($imatge->id_item == $items->id)
+                                <div class="mySlides fade">
+                                    <img src="../../{{$imatge->url}}" style="height:300px !important; width:700px !important;">
+                                </div>
+                                @endif
+                                @endforeach
+                                <!-- Next and previous buttons -->
+                                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                                <a class="next" onclick="plusSlides(1)">&#10095;</a>
+                            </div>
+                            <br>
+
+
+
                         </div>
                         <div class="card-body">
                             <h5 class="h1 card-title product-title" id="product-price">50€</h5>
@@ -24,5 +45,6 @@
             </div>
         </div>
     </div>
+    
 </div>
 @endsection
