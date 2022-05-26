@@ -36,6 +36,27 @@ class AddMoreFieldsToUsersTable extends Migration
             ['name' => 'roba', 'image' => '/categoria.png'],
             ['name' => 'sabates', 'image' => '/categoria.png']
         ]);
+        DB::table('items')->insert([
+            ['name' => 'BICICLETA BTWIN ROCKRIDER DE MONTAÑA', 'price' => '180','description' => 'ESTA COMO NUEVA NO LE FALTA NADA RUEDA DE ATRAS COMO NUEVA Y PUÑOS TAMBIEN +PITON DE REGALO','location' => 'Melilla','id_category' => '1','id_seller'=>'1','expiration_date'=>'2024-05-26'],
+            ['name' => 'Bicicleta de montaña', 'price' => '1.500','description' => 'Bicicleta de montaña de carbono doble suspensión marca Canyon de Lux.','location' => 'Las Vegas','id_category' => '1','id_seller'=>'1','expiration_date'=>'2024-05-26'],
+            ['name' => 'Bicicleta de montaña', 'price' => '80','description' => 'Bicicleta de montaña, está bien en buenas condición se puede usar.','location' => 'Alicante','id_category' => '1','id_seller'=>'1','expiration_date'=>'2024-05-26'],
+            ['name' => '', 'price' => '','description' => '','location' => '','id_category' => '1','id_seller'=>'1','expiration_date'=>'2024-05-26'],
+            ['name' => '', 'price' => '','description' => '','location' => '','id_category' => '1','id_seller'=>'1','expiration_date'=>'2024-05-26'],
+            ['name' => '', 'price' => '','description' => '','location' => '','id_category' => '1','id_seller'=>'1','expiration_date'=>'2024-05-26'],
+            ['name' => '', 'price' => '','description' => '','location' => '','id_category' => '1','id_seller'=>'1','expiration_date'=>'2024-05-26'],
+            ['name' => '', 'price' => '','description' => '','location' => '','id_category' => '1','id_seller'=>'1','expiration_date'=>'2024-05-26'],
+            ['name' => '', 'price' => '','description' => '','location' => '','id_category' => '1','id_seller'=>'1','expiration_date'=>'2024-05-26'],
+            ['name' => '', 'price' => '','description' => '','location' => '','id_category' => '1','id_seller'=>'1','expiration_date'=>'2024-05-26'],
+            ['name' => '', 'price' => '','description' => '','location' => '','id_category' => '1','id_seller'=>'1','expiration_date'=>'2024-05-26'],
+            ['name' => '', 'price' => '','description' => '','location' => '','id_category' => '1','id_seller'=>'1','expiration_date'=>'2024-05-26'],
+            ['name' => '', 'price' => '','description' => '','location' => '','id_category' => '1','id_seller'=>'1','expiration_date'=>'2024-05-26'],
+            ['name' => '', 'price' => '','description' => '','location' => '','id_category' => '1','id_seller'=>'1','expiration_date'=>'2024-05-26'],
+            ['name' => '', 'price' => '','description' => '','location' => '','id_category' => '1','id_seller'=>'1','expiration_date'=>'2024-05-26'],
+            ['name' => '', 'price' => '','description' => '','location' => '','id_category' => '1','id_seller'=>'1','expiration_date'=>'2024-05-26'],
+            ['name' => '', 'price' => '','description' => '','location' => '','id_category' => '1','id_seller'=>'1','expiration_date'=>'2024-05-26'],
+            ['name' => '', 'price' => '','description' => '','location' => '','id_category' => '1','id_seller'=>'1','expiration_date'=>'2024-05-26'],
+
+        ]);
     }
     /**
      * Reverse the migrations.
