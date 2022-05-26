@@ -3,84 +3,6 @@
 @section('body')
 <div class="row justify-content-center align-items-center">
     <div class="col-lg-6 col-md-10 my-5">
-        <style>
-            * {
-                box-sizing: border-box
-            }
-
-            /* Slideshow container */
-            .slideshow-container {
-                max-width: 1000px;
-                position: relative;
-                margin: auto;
-            }
-
-            /* Hide the images by default */
-            .mySlides {
-                display: none;
-            }
-
-            /* Next & previous buttons */
-            .prev,
-            .next {
-                cursor: pointer;
-                position: absolute;
-                top: 50%;
-                width: auto;
-                margin-top: -22px;
-                padding: 16px;
-                color: white;
-                font-weight: bold;
-                font-size: 18px;
-                transition: 0.6s ease;
-                border-radius: 0 3px 3px 0;
-                user-select: none;
-            }
-
-            /* Position the "next button" to the right */
-            .next {
-                right: 0;
-                border-radius: 3px 0 0 3px;
-            }
-
-            /* On hover, add a black background color with a little bit see-through */
-            .prev:hover,
-            .next:hover {
-                background-color: rgba(0, 0, 0, 0.8);
-            }
-
-            /* Caption text */
-            .text {
-                color: #f2f2f2;
-                font-size: 15px;
-                padding: 8px 12px;
-                position: absolute;
-                bottom: 8px;
-                width: 100%;
-                text-align: center;
-            }
-
-            /* Fading animation */
-            .fade {
-                animation-name: fade;
-                animation-duration: 0.5s;
-            }
-
-            .fade:not(.show) {
-                opacity: 1 !important;
-            }
-
-            @keyframes fade {
-                from {
-                    opacity: .4
-                }
-
-                to {
-                    opacity: 1
-                }
-            }
-        </style>
-
         <div class="container mt-4">
             <div class="row row-cols-lg-1 row-cols-md-1 row-cols-1">
                 <div class="col">
@@ -100,7 +22,7 @@
                                 @foreach ($imatges as $imatge)
                                 @if ($imatge->id_item == $items->id)
                                 <div class="mySlides fade">
-                                    <img src="../../{{$imatge->url}}" style="width:100%; max-height: 366.233px !important;">
+                                    <img src="../../{{$imatge->url}}" style="height:300px !important; width:700px !important;">
                                 </div>
                                 @endif
                                 @endforeach
@@ -123,31 +45,6 @@
             </div>
         </div>
     </div>
-
-    <script>
-        let slideIndex = 1;
-        showSlides(slideIndex);
-
-        // Next/previous controls
-        function plusSlides(n) {
-            showSlides(slideIndex += n);
-        }
-
-        function showSlides(n) {
-            let i;
-            let slides = document.getElementsByClassName("mySlides");
-            if (n > slides.length) {
-                slideIndex = 1
-            }
-            if (n < 1) {
-                slideIndex = slides.length
-            }
-            for (i = 0; i < slides.length; i++) {
-                slides[i].style.display = "none";
-            }
-            slides[slideIndex - 1].style.display = "block";
-            dots[slideIndex - 1].className += " active";
-        }
-    </script>
+    
 </div>
 @endsection
