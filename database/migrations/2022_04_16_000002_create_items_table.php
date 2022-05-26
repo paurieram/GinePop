@@ -18,7 +18,7 @@ class CreateItemsTable extends Migration
             $table->id();
             $table->string('name');
             $table->integer('price');
-            $table->string('description');
+            $table->longText('description');
             $table->string('location');
             $table->integer('state')->default(0);
             $table->foreignId('id_category')->constrained('categories')->onUpdate('cascade')->onDelete('restrict');
