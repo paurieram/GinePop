@@ -34,6 +34,7 @@
             </ul>
         </div>
     </footer>
+    <script src="/js/slideshow.js"></script>
     <script src="/js/img.js"></script>
 </body>
 
