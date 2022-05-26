@@ -32,23 +32,16 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified'
 ])->group(function () {
-    // Route::get('/items/{item}',[ItemsController::class, 'show']);
     Route::get('/items',[ItemsController::class, 'index'])->name('items');
-    // Route::post('/pais',[ItemsController::class, '']);
     Route::get('/index', function () {
         return redirect('/');
     })->name('index');
     // Route::get('/items', function () {
     //     return view('items');
     // })->name('items');
-
     Route::get('/panel', function () {
         return view('panel');
     })->name('panel');
-    // Route::get('/items/view/{id}', function (Request $request) {
-        // return view('items-view');
-        // return view('products-view', ['id' => $request]);
-    // })->name('view');
 });
 Route::fallback(function () {
     return redirect('/');

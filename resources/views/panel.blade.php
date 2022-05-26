@@ -13,6 +13,11 @@
                     <div class="h4 p-2">Crear Usuari</div>
                 </a>
             </section>
+            <section class="white-box-shadow rounded mb-4">
+                <a>
+                    <div class="h4 p-2">Veure Usuaris</div>
+                </a>
+            </section>
         </div>
     </div>  
 @endsection

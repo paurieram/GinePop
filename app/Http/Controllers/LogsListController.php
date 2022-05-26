@@ -55,10 +55,10 @@ class LogsListController extends Controller
      * @param  \App\Models\logs_list  $logs_list
      * @return \Illuminate\Http\Response
      */
-    public function edit(logs_list $logs_list)
-    {
-        //
-    }
+    // public function edit(logs_list $logs_list)
+    // {
+    //     //
+    // }
 
     /**
      * Update the specified resource in storage.
@@ -67,10 +67,10 @@ class LogsListController extends Controller
      * @param  \App\Models\logs_list  $logs_list
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, logs_list $logs_list)
-    {
-        //
-    }
+    // public function update(Request $request, logs_list $logs_list)
+    // {
+    //     //
+    // }
 
     /**
      * Remove the specified resource from storage.
@@ -78,8 +78,8 @@ class LogsListController extends Controller
      * @param  \App\Models\logs_list  $logs_list
      * @return \Illuminate\Http\Response
      */
-    public function destroy(logs_list $logs_list)
-    {
-        //
-    }
+    // public function destroy(logs_list $logs_list)
+    // {
+    //     //
+    // }
 }
