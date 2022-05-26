@@ -36,6 +36,7 @@
     </footer>
     <script src="/js/slideshow.js"></script>
     <script src="/js/img.js"></script>
+    <script src="/js/modal.js"></script>
 </body>
 
 </html>
