@@ -30,6 +30,12 @@ class AddMoreFieldsToUsersTable extends Migration
                 'state' => '3'
             )   
         );
+        DB::table('categories')->insert([
+            ['name' => 'bicis', 'image' => '/categoria.png'],
+            ['name' => 'motxiles', 'image' => '/categoria.png'],
+            ['name' => 'roba', 'image' => '/categoria.png'],
+            ['name' => 'sabates', 'image' => '/categoria.png']
+        ]);
     }
     /**
      * Reverse the migrations.
