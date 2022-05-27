@@ -1,6 +1,6 @@
 # GinePop
 
-- ## Com instalar Ginepop
+- ## Com instal·lar Ginepop
 
 ### Iniciem el laragon
 
