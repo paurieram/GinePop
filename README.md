@@ -1,6 +1,6 @@
 # GinePop
 
-- ## Visual studio 
+- ## Laragon
 
 ### Iniciem el laragon
 
@@ -13,6 +13,8 @@
 ### Posem nom al nostre projecte `Ginepop`
 
 ![image](https://user-images.githubusercontent.com/78435604/170719516-3b3b57bd-6a1d-4905-91c1-845a76c60d8e.png)
+
+- ## Visual studio Terminal
 
 ### Inicialitzem el directori
 > `git init`
