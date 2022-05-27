@@ -49,6 +49,7 @@
 ![image](https://user-images.githubusercontent.com/78435604/170725420-44a12691-f4c2-44a2-9eac-c6cc2dcf7e1d.png)
 
 ### Canviar fitxer `.env`
+> `ginepop`
 
 ![image](https://user-images.githubusercontent.com/78435604/170723023-b981b0f6-e26a-4055-9d12-0472b58fff26.png)
 
