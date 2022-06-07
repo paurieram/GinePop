@@ -1,7 +1,7 @@
 # GinePop
 
 <details>
-<summary>Com instal·lar Ginepop en laragon</summary>
+<summary>Com instal·lar Ginepop en laragon (Amb Captures)</summary>
 <br>
 
 ### Iniciem el laragon
@@ -65,7 +65,48 @@
 
 </details>
 
+<details>
+<summary>Com instal·lar Ginepop en laragon (Sense Captures)</summary>
+<br>
+    
+### Iniciem el laragon
 
+### Creem un nou projecte de laravel
+
+### Posem nom al nostre projecte `Ginepop`
+
+- ## Visual studio Terminal
+
+### Inicialitzem el directori
+> `git init`
+
+### Conectem el directori amb el repositori
+> `git remote add origin https://github.com/paurigine/GinePop.git`
+
+### Descarreguem el repositori
+> `git fetch --all`
+
+### Actualitzem el directori
+> `git reset --hard origin/main`
+
+- ## Laragon Terminal
+
+### Instalem les dependencies
+> `npm install`
+
+### Instalem una dependencia extra
+>`composer require laravel/fortify`
+
+### Canviar fitxer `.env`
+> `ginepop`
+
+### Create database
+> `php artisan migrate`
+
+### Obrim el navegador i busquem
+> `http://ginepop.test/`
+    
+</details>
 
 
 
