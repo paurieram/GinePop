@@ -40,10 +40,10 @@ class ItemsController extends Controller
         $item = items::create($request->all());
 
         for($i = 0; $request->hasFile('url'.$i); $i++) {
-            $ruta = $request->file('url'.$i)->storePublicly('img', 'public');
+            $ruta = $request->file('url'.$i)->storePublicly('img/productes', 'public');
             
-            imgs::create(["url" => $ruta, "id_item" => $item->id]);
-            echo $i;
+            imgs::create(["url" => "/".$ruta, "id_item" => $item->id]);
+            // echo $i;
         }
 
         return redirect('/items');
