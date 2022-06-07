@@ -1,6 +1,8 @@
 # GinePop
 
-- ## Com instal·lar Ginepop en laragon
+<details>
+<summary>Com instal·lar Ginepop en laragon</summary>
+<br>
 
 ### Iniciem el laragon
 
@@ -61,7 +63,7 @@
 ### Obrim el navegador i busquem
 > `http://ginepop.test/`
 
-
+</details>
 
 
 
