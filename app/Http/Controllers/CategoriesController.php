@@ -36,10 +36,8 @@ class CategoriesController extends Controller
     public function store(Request $request)
     {
         categories::create($request->all());
-        $ruta = $request->file('url'.'1')->storePublicly('img/categories', 'public');
-            
-
-        return redirect('/items');
+        $request->file('url')->storePublicly('img/categories', 'public');
+        return redirect('/panel');
     }
 
     /**

@@ -21,13 +21,12 @@ use Illuminate\Support\Facades\Auth;
 */
 
 Route::get('/', function () {
-    return view('index', ['categories' => categories::all()->take(4)]);
+    return view('index', ['categories' => categories::whereNotNull('image')->get()->take(4)]);
 });
 
 Route::resource('/items', ItemsController::class);
 Route::resource('/logs', LogsListController::class);
 Route::resource('/categories', CategoriesController::class);
-
 
 Route::middleware([
     'auth:sanctum',
