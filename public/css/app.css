@@ -2349,4 +2349,13 @@ body {
       opacity: 1
   }
 }
+.carrusel{
+  max-height: 500px;
+  object-fit: cover;
+}
+.outline{
+  border-color: #e5e7eb;
+  background-color: rgba(0,0,0,.03);
+  border-top: 1px solid rgba(0,0,0,.125);
+}
 /*---------------*/

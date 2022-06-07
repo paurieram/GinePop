@@ -58,7 +58,7 @@ class ItemsController extends Controller
     public function show(items $item)
     {
         // return $item;
-        return view('items-view', ['items' => $item, 'imatges' => imgs::all()]);
+        return view('items-view', ['item' => $item, 'imatges' => imgs::all()]);
         // return view('products-view', ['id' => $request]);
     }
 

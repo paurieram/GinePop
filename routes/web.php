@@ -6,6 +6,8 @@ use App\Http\Controllers\LogsListController;
 use App\Http\Controllers\ItemsController;
 use App\Http\Controllers\CategoriesController;
 use Illuminate\Http\Request;
+use App\Models\categories;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,7 +21,7 @@ use Illuminate\Http\Request;
 */
 
 Route::get('/', function () {
-    return view('index');
+    return view('index', ['categories' => categories::all()->take(4)]);
 });
 
 Route::resource('/items', ItemsController::class);
@@ -40,7 +42,11 @@ Route::middleware([
     //     return view('items');
     // })->name('items');
     Route::get('/panel', function () {
-        return view('panel');
+        if(Auth::user()->state === 3) {
+            return view('panel');
+        }else{
+            return redirect('/');
+        }
     })->name('panel');
 });
 Route::fallback(function () {

@@ -31,10 +31,10 @@ class AddMoreFieldsToUsersTable extends Migration
             )   
         );
         DB::table('categories')->insert([
-            ['name' => 'bicis', 'image' => '/categoria.png'],
-            ['name' => 'motxiles', 'image' => '/categoria.png'],
-            ['name' => 'roba', 'image' => '/categoria.png'],
-            ['name' => 'sabates', 'image' => '/categoria.png']
+            ['name' => 'bicis', 'image' => '/img/categoria.png'],
+            ['name' => 'motxiles', 'image' => '/img/categoria.png'],
+            ['name' => 'roba', 'image' => '/img/categoria.png'],
+            ['name' => 'sabates', 'image' => '/img/categoria.png']
         ]);
         DB::table('items')->insert([
             ['name' => 'BICICLETA BTWIN ROCKRIDER DE MONTAÑA', 'price' => 180,'description' => 'ESTA COMO NUEVA NO LE FALTA NADA RUEDA DE ATRAS COMO NUEVA Y PUÑOS TAMBIEN +PITON DE REGALO','location' => 'Melilla','id_category' => '1','id_seller'=>'1','expiration_date'=>'2024-05-26'],
