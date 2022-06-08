@@ -2360,13 +2360,26 @@ body {
 }
 .mv-left {
   transition: 0.2s;
+  cursor: pointer;
 }
 .mv-left:hover{
   transform: translateX(10px);
-  cursor: pointer;
 }
-#content{
+.fixed-left{
+  transform: translateX(10px);
+}
+.content{
   height: 600px;
   width: 100%;
+}
+.customshadow{
+  box-shadow: 0px 0px 3px #aaa !important
+
+}
+.form-label{
+  font-weight: 600;
+}
+.hiden{
+  display: none !important;
 }
 /*---------------*/

@@ -7,16 +7,16 @@
         @csrf
         <div class="row g-1">
             <div class="form-floating mb-3 col">
-                <x-jet-input id="name" class="form-control" style="box-shadow: 0px 0px 3px #aaa !important" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
+                <x-jet-input id="name" class="form-control customshadow" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
                 <x-jet-label for="name" value="{{ __('Títol') }}" />
             </div>
             <div class="form-floating mb-3 col">
-                <x-jet-input id="price" class="form-control" style="box-shadow: 0px 0px 3px #aaa !important" type="number" name="price" :value="old('price')" required autofocus autocomplete="price" />
+                <x-jet-input id="price" class="form-control customshadow" type="number" name="price" :value="old('price')" required autofocus autocomplete="price" />
                 <x-jet-label for="price" value="{{ __('Preu') }}" />
             </div>
         </div>
         <div class="form-floating mb-3">
-            <select class="form-select" id="id_category" name="id_category" aria-label="Floating label select example" style="box-shadow: 0px 0px 3px #aaa !important">
+            <select class="form-select customshadow" id="id_category" name="id_category" aria-label="Floating label select example">
                 <option selected>Selecciona categoria</option>
                     @foreach ($categories as $category)
                         <option value="{{$category->id}}">{{$category->name}}</option>
@@ -25,7 +25,7 @@
             <label for="id_category">Categoria</label>
         </div>
         <div class="form-floating mb-3">
-            <textarea id="description" class="form-control" style="box-shadow: 0px 0px 3px #aaa !important" name="description" required autofocus autocomplete="description"></textarea>
+            <textarea id="description" class="form-control customshadow" name="description" required autofocus autocomplete="description"></textarea>
             <x-jet-label for="description" value="{{ __('Descripció') }}" />
         </div>
         <p class="mb-1">Afegeix les imatges desitjades (max. 8)</p>
@@ -42,7 +42,7 @@
         <div id="blah" style="background-color: #e4ebe6; border-radius:10px;" class="my-3">
         </div>
         <div class="form-floating mb-3 col">
-            <x-jet-input id="location" class="form-control" style="box-shadow: 0px 0px 3px #aaa !important" type="text" name="location" :value="old('location')" required autofocus autocomplete="location" />
+            <x-jet-input id="location" class="form-control customshadow" type="text" name="location" :value="old('location')" required autofocus autocomplete="location" />
             <x-jet-label for="location" value="{{ __('Ubicació') }}" />
         </div>
         <div class="flex items-center justify-end my-4">

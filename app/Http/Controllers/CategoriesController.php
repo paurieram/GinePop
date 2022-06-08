@@ -14,7 +14,7 @@ class CategoriesController extends Controller
      */
     public function index()
     {
-        //
+        return categories::all();
     }
 
     /**
@@ -35,8 +35,13 @@ class CategoriesController extends Controller
      */
     public function store(Request $request)
     {
-        categories::create($request->all());
-        $request->file('url')->storePublicly('img/categories', 'public');
+        $data = (object)[];
+        $data->name = $request->name;
+        if (isset($request->image)){
+            $route = $request->file('image')->storePublicly('img/categories', 'public');
+            $data->image = "/".$route;
+        }
+        categories::create((array)$data);
         return redirect('/panel');
     }
 

@@ -57,7 +57,7 @@ class ItemsController extends Controller
      */
     public function show(items $item)
     {
-        // return $item;
+        items::where('id', $item->id)->update(array('views' => $item->views+1));
         return view('items-view', ['item' => $item, 'imatges' => imgs::all()]);
         // return view('products-view', ['id' => $request]);
     }
