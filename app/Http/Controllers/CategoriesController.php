@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\categories;
+use App\Models\items;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CategoriesController extends Controller
 {
@@ -51,9 +53,13 @@ class CategoriesController extends Controller
      * @param  \App\Models\categories  $categories
      * @return \Illuminate\Http\Response
      */
-    public function show(categories $categories)
+    public function show(categories $category)
     {
-        //
+
+        return view('items', [
+            'items' => $category->items,
+            'categories' => items::select(DB::raw('items.id_category, categories.name, COUNT(items.id) as itemsxcat'))->join('categories','items.id_category','=','categories.id')->groupBy('items.id_category', 'categories.name')->get(),
+            'id_category' => $category->id]);
     }
 
     /**

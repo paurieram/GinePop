@@ -8,8 +8,15 @@
                 <div class="col">
                     <div class="card mb-3 " style="border-radius:10px">
                         <div class="card-header d-flex">
-                            <span id="seller" class="h3 card-title justify-content-start">{{ $item->id_seller }}</span>
-                            <button class="ms-auto btn">Contacte</button>
+                            <div class="card-user-detail">
+                                <span id="seller" class="h3 card-title justify-content-start">{{ $item->id_seller }}</span>
+                                @if ($item->sold == 1)
+                                    <span class="text-muted">{{ $item->sold }} Producte a la venda</span>
+                                @else
+                                    <span class="text-muted">{{ $item->sold }} Productes a la venda</span>
+                                @endif
+                            </div>
+                            <button class="ms-auto btn btn-sm my-auto">Contacte</button>
                         </div>
                         <div class="d-flex justify-content-center bg-white">
                             <!-- Slideshow container -->
