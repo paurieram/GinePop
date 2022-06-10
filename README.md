@@ -55,7 +55,7 @@
 
 ![image](https://user-images.githubusercontent.com/78435604/170723023-b981b0f6-e26a-4055-9d12-0472b58fff26.png)
 
-### Create database
+### Creem la BBDD
 > `php artisan migrate`
 
 ![image](https://user-images.githubusercontent.com/78435604/170723145-90037fee-0144-419c-a376-6aba3865bbdd.png)
@@ -100,7 +100,7 @@
 ### Canviar fitxer `.env`
 > `ginepop`
 
-### Create database
+### Creem la BBDD
 > `php artisan migrate`
 
 ### Obrim el navegador i busquem
@@ -108,5 +108,14 @@
     
 </details>
 
-
+<details>
+<summary>Estats</summary>
+<br>
+| **users** | **state** |  | **items** | **state** |  | **category** | **state** |
+|---|---|---|---|---|---|---|---|
+| 0 | normal |  | 0 | normal |  | 0 | active |
+| 1 | timeout |  | 1 | sold |  | 1 | disabled |
+| 2 | banned |  | 2 | disabled |  |  |  |
+| 3 | admin |  | 3 | expired |  |  |  |
+</details>
 
