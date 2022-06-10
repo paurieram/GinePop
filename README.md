@@ -118,6 +118,7 @@
 | 1 | timeout |  | 1 | sold |  | 1 | disabled |
 | 2 | banned |  | 2 | disabled |  |  |  |
 | 3 | admin |  | 3 | expired |  |  |  |
+| 4 | disabled |  | | |  |  |  |
     
 </details>
 
