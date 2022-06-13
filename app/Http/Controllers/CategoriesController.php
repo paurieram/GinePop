@@ -50,25 +50,28 @@ class CategoriesController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\categories  $categories
+     * @param  \App\Models\categories  $category
      * @return \Illuminate\Http\Response
      */
     public function show(categories $category)
     {
-
         return view('items', [
-            'items' => $category->items,
-            'categories' => items::select(DB::raw('items.id_category, categories.name, COUNT(items.id) as itemsxcat'))->join('categories','items.id_category','=','categories.id')->groupBy('items.id_category', 'categories.name')->get(),
+            'items' => $category->items->where('state', '0'),
+            'categories' => items::select(DB::raw('items.id_category, categories.name, COUNT(items.id) as itemsxcat'))
+                            ->Join('categories','items.id_category','=','categories.id')
+                            ->where('items.state', 0)
+                            ->groupBy('items.id_category', 'categories.name')
+                            ->get(),
             'id_category' => $category->id]);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\categories  $categories
+     * @param  \App\Models\categories  $category
      * @return \Illuminate\Http\Response
      */
-    public function edit(categories $categories)
+    public function edit(categories $category)
     {
         //
     }
@@ -77,21 +80,23 @@ class CategoriesController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\categories  $categories
+     * @param  \App\Models\categories  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, categories $categories)
+    public function update(Request $request, categories $category)
     {
-        //
+        items::where('id_category', $request->id)->update(array('state' => '2'));
+        $category->where('id', $request->id)->update(array('state' => $request->state));
+        return redirect('/panel');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\categories  $categories
+     * @param  \App\Models\categories  $category
      * @return \Illuminate\Http\Response
      */
-    public function destroy(categories $categories)
+    public function destroy(categories $category)
     {
         //
     }

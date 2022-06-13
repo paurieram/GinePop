@@ -19,10 +19,13 @@ class ItemsController extends Controller
     public function index()
     {
         return view('items', [
-            'items' => items::all(),
-            'categories' => items::select(DB::raw('items.id_category, categories.name, COUNT(items.id) as itemsxcat'))->join('categories','items.id_category','=','categories.id')->groupBy('items.id_category', 'categories.name')->get(),
+            'items' => items::where('state', 0)->get(),
+            'categories' => items::select(DB::raw('items.id_category, categories.name, COUNT(items.id) as itemsxcat'))
+                                        ->join('categories','items.id_category','=','categories.id')
+                                        ->where('items.state', 0)
+                                        ->groupBy('items.id_category', 'categories.name')
+                                        ->get(),
             ]);
-
         // return view('items', ['items' => items::all()]);
     }
 
@@ -77,7 +80,7 @@ class ItemsController extends Controller
         $cat = categories::where('id', $item->id_category)->get();
         $item->id_category = $cat[0]->name;
         $usr = user::where('id', $item->id_seller)->get();
-        $item->sold = items::where('id_seller', $item->id_seller)->count();
+        $item->sold = items::where('id_seller', $item->id_seller)->where('state', '0')->count();
         $item->id_seller = $usr[0]->name;
         return view('items-view', ['item' => $item, 'imatges' => imgs::all()]);
     }

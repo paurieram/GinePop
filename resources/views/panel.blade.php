@@ -46,10 +46,61 @@
             <div class="col-8 pt-5 mb-4 row">
                 <div class="h2 mb-4 row">Gestionar Categories</div>
                 <table class="table" id="categorycontent">
-                    <th scope="col">Id</th><th scope="col">Name</th><th scope="col">Img</th><th scope="col">Updated</th><th>visibilitat</th><th></th>
+                    <th scope="col">Id</th><th scope="col">Name</th><th scope="col">Img</th><th scope="col">Updated</th><th>Visibilitat</th><th></th>
+                </table>
+            </div>
+        </section>
+        <section id="CardShowUsers" class="container-fluid card-panel hiden white-box-shadow rounded d-flex justify-content-center">
+            <div class="col-9 pt-5 mb-4 row">
+                <div class="h2 mb-4 row">Gestionar Usuaris</div>
+                <table class="table" id="usercontent">
+                    <th scope="col">Id</th><th scope="col">Name</th><th scope="col">Email</th><th scope="col">Updated</th><th scope="col">Contact</th><th>Estat</th><th></th>
                 </table>
             </div>
         </section>
     </div>
 </div>
+
+<!-- Modal Coonfirm Category -->
+<div class="modal" id="ChangeCategory" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Confirmació de Canvis</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">Al desactivar una categoria també es desactivaran els seus ítems</div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Tanca</button>
+        <form action="" id="formput" method="POST">
+            @method("PUT")
+            @csrf
+            <input type="hidden" id="putid" name="id">
+            <input type="hidden" id="putstate" name="state">
+            <button type="submit" class="btn btn-outline-danger">Cambiar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal User Info -->
+<div class="modal" id="UserInfo" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Confirmació de Canvis</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="">
+
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Tanca</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 @endsection

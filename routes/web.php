@@ -7,6 +7,7 @@ use App\Http\Controllers\ItemsController;
 use App\Http\Controllers\CategoriesController;
 use Illuminate\Http\Request;
 use App\Models\categories;
+use App\Models\user;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -37,9 +38,13 @@ Route::middleware([
     Route::get('/index', function () {
         return redirect('/');
     })->name('index');
-    // Route::get('/items', function () {
-    //     return view('items');
-    // })->name('items');
+    Route::get('/usrs', function () {
+        if(Auth::user()->state === 3) {
+            return user::all();
+        }else{
+            return redirect('/');
+        }
+    });
     Route::get('/panel', function () {
         if(Auth::user()->state === 3) {
             return view('panel');
