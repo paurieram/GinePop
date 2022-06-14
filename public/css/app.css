@@ -2414,3 +2414,6 @@ body {
   --tw-border-opacity: 1;
   border-color: rgb(165 180 252 / var(--tw-border-opacity));
 }
+.ptr{
+  cursor: pointer;
+}

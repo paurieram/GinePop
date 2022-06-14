@@ -51,7 +51,7 @@
             </div>
         </section>
         <section id="CardShowUsers" class="container-fluid card-panel hiden white-box-shadow rounded d-flex justify-content-center">
-            <div class="col-9 pt-5 mb-4 row">
+            <div class="col-10 pt-5 mb-4 row">
                 <div class="h2 mb-4 row">Gestionar Usuaris</div>
                 <table class="table" id="usercontent">
                     <th scope="col">Id</th><th scope="col">Name</th><th scope="col">Email</th><th scope="col">Updated</th><th scope="col">Contact</th><th>Estat</th><th></th>
@@ -66,7 +66,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel">Confirmació de Canvis</h5>
+        <h5 class="modal-title" id="ChangeCategoryLabel">Confirmació de Canvis</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">Al desactivar una categoria també es desactivaran els seus ítems</div>
@@ -88,11 +88,11 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel">Confirmació de Canvis</h5>
+        <h5 class="modal-title" id="UserInfoLabel"></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <div class="">
+        <div id="UserInfoContent">
 
         </div>
       </div>

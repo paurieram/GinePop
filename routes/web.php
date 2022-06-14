@@ -22,6 +22,12 @@ use Illuminate\Support\Facades\Auth;
 */
 
 Route::get('/', function () {
+    if (!empty(Auth::user())){
+        if (Auth::user()->state === 1 || Auth::user()->state === 2 || Auth::user()->state === 4){
+            Auth::logout();
+            return redirect()->route('/login')->with(['usrerror' => 'marica']);
+        }
+    }
     return view('index', ['categories' => categories::whereNotNull('image')->get()->take(4)]);
 });
 

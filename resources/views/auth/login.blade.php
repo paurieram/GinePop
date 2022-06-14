@@ -24,29 +24,37 @@
 
             <div class="form-floating mb-3">
                 <x-jet-input id="password" class="form-control" style="box-shadow: 0px 0px 3px #aaa !important" type="password" name="password" required autocomplete="current-password" />
-                <x-jet-label for="password" value="{{ __('Password') }}" />
+                <x-jet-label for="password" value="{{ __('Contrasenya') }}" />
             </div>
 
             <div class="block mt-4">
                 <label for="remember_me" class="flex items-center">
                     <x-jet-checkbox id="remember_me" name="remember" />
-                    <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
+                    <span class="ml-2 text-sm text-gray-600">Recorda'm</span>
                 </label>
             </div>
 
             <x-jet-validation-errors class="my-3" />
+            @if (session('usrerror'))
+                <div class="my-3">
+                    <div class="font-medium text-red-600">Ups! Algo a fallat.</div>
+                    <ul class="mt-3 list-disc list-inside text-sm text-red-600">
+                        <li></li>
+                    </ul>
+                </div>
+            @endif
             <div class="flex items-center justify-end my-4">
                 <a class="underline me-3 text-sm text-gray-600 hover:text-gray-900" href="{{ route('register') }}">
-                    Create a new account
+                    Crear nou compte
                 </a>
                 @if (Route::has('password.request'))
                 <a class="underline me-3 text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
-                    {{ __('Forgot your password?') }}
+                    {{ __('He hoblidat la contrasenya') }}
                 </a>
                 @endif
 
                 <x-jet-button>
-                    {{ __('Log in') }}
+                    {{ __('Iniciar sessió') }}
                 </x-jet-button>
             </div>
         </form>

@@ -37,22 +37,40 @@ $(function () {
                         }else{
                             user.created_at = new Date(user.created_at).toLocaleDateString("es-ES");
                         }
+                        if (user.instagram == null){
+                            user.instagram = '-';
+                        }
+                        if (user.whatsapp == null){
+                            user.whatsapp = '-';
+                        }
+                        if (user.o_contact == null){
+                            user.o_contact = '-';
+                        }
                         htm += '<tr><th scope="row">'+user.id+'</th><td>'+user.name+' '+user.surname+'</td><td>'
-                        +user.email+'</td><td>'+user.created_at+'</td><td><u title="instagram\nwatsap\naltres">Veure</u></td>';
-                        user.instagram
-                        user.whatsapp
-                        user.o_contact
-                        // if (user.state == 1){
-                            // htm += '<select class="customimput" id="'+user.id+'"><option value="0">activat</option><option value="1" selected>desactivat</option></select></td><td></td></tr>';
-                        // }else{
-                        // }
-
+                        +user.email+'</td><td>'+user.created_at
+                        +'</td><td><u class="UserInfoLink ptr" data-bs-toggle="modal" data-bs-target="#UserInfo" inst="'
+                        +user.instagram+'" what="'+user.whatsapp+'" opt="'+user.o_contact+'" nam="'+user.name+'">Veure</u></td>';
+                        if (user.state == 0){
+                            htm += '<td><select class="customimput" id="'+user.id+'"><option value="0" selected>activat</option><option value="2">banned</option><option value="3">admin</option><option value="4">desactivat</option></select></td></tr>';
+                        }else if(user.state == 1){
+                            // htm += '<td><select class="customimput" id="'+user.id+'"><option value="0">activat</option><option value="2">banned</option><option value="3">admin</option><option value="4">desactivat</option></select></td></tr>';
+                        }else if(user.state == 2){
+                            htm += '<td><select class="customimput" id="'+user.id+'"><option value="0">activat</option><option value="2" selected>banned</option><option value="3">admin</option><option value="4">desactivat</option></select></td></tr>';
+                        }else if(user.state == 3){
+                            htm += '<td><select class="customimput" id="'+user.id+'"><option value="0">activat</option><option value="2">banned</option><option value="3" selected>admin</option><option value="4">desactivat</option></select></td></tr>';
+                        }else if(user.state == 4){
+                            htm += '<td><select class="customimput" id="'+user.id+'"><option value="0">activat</option><option value="2">banned</option><option value="3">admin</option><option value="4" selected>desactivat</option></select></td></tr>';
+                        }
                     });
-                    $('#usercontent').append(htm);  
+                    $('#usercontent').append(htm); 
+                    $('.UserInfoLink').on('click', function () {
+                        $('#UserInfoLabel').text('Contacte del usuari: '+$(this).attr('nam')+'');
+                        $('#UserInfoContent').html('<div>Instagram: '+$(this).attr('inst')+'</div><br><div>Whatsapp: '+$(this).attr('what')+'</div><br><div>Opcional: '+$(this).attr('opt')+'</div>');
+                    }); 
                 }
             }
         });
-    });
+    });    
 /* 
  *  Show all categories card
  */
