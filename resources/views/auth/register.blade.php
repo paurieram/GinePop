@@ -24,12 +24,12 @@
         <div class="row g-1">
             <div class="form-floating col">
                 <x-jet-input id="password" class="form-control" style="box-shadow: 0px 0px 3px #aaa !important" type="password" name="password" required autocomplete="new-password" />
-                <x-jet-label for="password" value="{{ __('Password') }}" />
+                <x-jet-label for="password" value="{{ __('Contrasenya') }}" />
             </div>
 
             <div class="form-floating col">
                 <x-jet-input id="password_confirmation" class="form-control" style="box-shadow: 0px 0px 3px #aaa !important" type="password" name="password_confirmation" required autocomplete="new-password" />
-                <x-jet-label for="password_confirmation" value="{{ __('Confirm Password') }}" />
+                <x-jet-label for="password_confirmation" value="{{ __('Confirmar contrasenya') }}" />
             </div>
         </div>
 

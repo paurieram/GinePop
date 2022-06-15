@@ -59,6 +59,13 @@
             </div>
         </section>
     </div>
+    <!-- <div id="error" class="ms-auto hidden">
+        <div style="padding: 5px;">
+            <div id="inner-message" class="alert alert-succsess fixed-top-right">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+            </div>
+        </div>
+    </div> -->
 </div>
 
 <!-- Modal Coonfirm Category -->
@@ -72,13 +79,8 @@
       <div class="modal-body">Al desactivar una categoria també es desactivaran els seus ítems</div>
       <div class="modal-footer">
         <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Tanca</button>
-        <form action="" id="formput" method="POST">
-            @method("PUT")
-            @csrf
-            <input type="hidden" id="putid" name="id">
-            <input type="hidden" id="putstate" name="state">
-            <button type="submit" class="btn btn-outline-danger">Cambiar</button>
-        </form>
+        @csrf
+        <button type="button" class="btn btn-outline-danger send-category-changes" data-bs-dismiss="modal">Cambiar</button>
       </div>
     </div>
   </div>

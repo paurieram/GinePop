@@ -37,9 +37,9 @@
             <x-jet-validation-errors class="my-3" />
             @if (session('usrerror'))
                 <div class="my-3">
-                    <div class="font-medium text-red-600">Ups! Algo a fallat.</div>
+                    <div class="font-medium text-red-600">Vaja! Alguna cosa ha anat malament.</div>
                     <ul class="mt-3 list-disc list-inside text-sm text-red-600">
-                        <li></li>
+                        <li>{{ session('usrerror') }}</li>
                     </ul>
                 </div>
             @endif

@@ -24,8 +24,17 @@ use Illuminate\Support\Facades\Auth;
 Route::get('/', function () {
     if (!empty(Auth::user())){
         if (Auth::user()->state === 1 || Auth::user()->state === 2 || Auth::user()->state === 4){
+            $errs = [1 => 'El teu compte esta desactivat tempoalment, si creus que es un error contacta amb un administrador', 2 => 'El teu compte esta desactivat permanentment, si creus que es un error contacta amb un administrador', 4 => 'El teu compte esta desactivat indefinidament, si creus que es un error contacta amb un administrador'];
+            $i = 1;
+            if(Auth::user()->state === 1){
+                $i = 1;
+            }else if(Auth::user()->state === 2){
+                $i = 2;
+            }else if(Auth::user()->state === 4){
+                $i = 4;
+            }
             Auth::logout();
-            return redirect()->route('/login')->with(['usrerror' => 'marica']);
+            return redirect('/login')->with(['usrerror' => $errs[$i]]);
         }
     }
     return view('index', ['categories' => categories::whereNotNull('image')->get()->take(4)]);
