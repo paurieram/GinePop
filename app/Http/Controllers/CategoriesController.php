@@ -55,6 +55,7 @@ class CategoriesController extends Controller
      */
     public function show(categories $category)
     {
+        categories::where('id', $category->id)->update(array('views' => $category->views+1));
         return view('items', [
             'items' => $category->items->where('state', '0'),
             'categories' => items::select(DB::raw('items.id_category, categories.name, COUNT(items.id) as itemsxcat'))

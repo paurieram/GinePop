@@ -2365,6 +2365,7 @@ body {
 }
 .mv-left:hover{
   transform: translateX(10px);
+  background-color: lightgray;
 }
 .fixed-left{
   transform: translateX(10px);
@@ -2417,26 +2418,15 @@ body {
 .ptr{
   cursor: pointer;
 }
-.alert-fixed {
-  position:fixed; 
-  top: 0px; 
-  /* left: ;  */
-  width: 20%;
-  z-index:9999; 
-  border-radius:0px;
-}
-/* #error{
-  width: 20%;
-} */
 #inner-message{
   width: 20%;
 }
 .fixed-top-right{
   position: fixed;
-  top: 0;
-  right: 0;
+  top: 15px;
+  right: 15px;
   z-index: 1030;
 }
-/* .hidden{
-  display: none;
-} */
+#piechart{
+  
+}

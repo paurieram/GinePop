@@ -37,7 +37,7 @@ Route::get('/', function () {
             return redirect('/login')->with(['usrerror' => $errs[$i]]);
         }
     }
-    return view('index', ['categories' => categories::whereNotNull('image')->get()->take(4)]);
+    return view('index', ['categories' => categories::whereNotNull('image')->get()]);
 });
 
 Route::resource('/items', ItemsController::class);

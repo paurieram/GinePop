@@ -29,6 +29,7 @@
         </div>
     </div>  
     <div class="col-lg-6 offset-lg-1 col-md-6 offset-md-1 col-5 offset-1 my-5">
+        <!-- CreateCategory -->
         <section id="CardCreateCategory" class="card-panel hiden content white-box-shadow rounded d-flex justify-content-center">
             <div class="col-6 pt-5">
                 <div class="h2 mt-5 mb-4">Crear Categoria</div>
@@ -42,14 +43,16 @@
                 </form>
             </div>
         </section>
+        <!-- ShowCategory -->
         <section id="CardShowCategory" class="container-fluid card-panel hiden white-box-shadow rounded d-flex justify-content-center">
             <div class="col-8 pt-5 mb-4 row">
                 <div class="h2 mb-4 row">Gestionar Categories</div>
                 <table class="table" id="categorycontent">
-                    <th scope="col">Id</th><th scope="col">Name</th><th scope="col">Img</th><th scope="col">Updated</th><th>Visibilitat</th><th></th>
+                    <tr><th scope="col">Id</th><th scope="col">Name</th><th scope="col">Img</th><th scope="col">Updated</th><th>Visibilitat</th><th></th></tr>
                 </table>
             </div>
         </section>
+        <!-- ShowUsers -->
         <section id="CardShowUsers" class="container-fluid card-panel hiden white-box-shadow rounded d-flex justify-content-center">
             <div class="col-10 pt-5 mb-4 row">
                 <div class="h2 mb-4 row">Gestionar Usuaris</div>
@@ -58,17 +61,26 @@
                 </table>
             </div>
         </section>
-    </div>
-    <!-- <div id="error" class="ms-auto hidden">
-        <div style="padding: 5px;">
-            <div id="inner-message" class="alert alert-succsess fixed-top-right">
-                <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <!-- CardStats -->
+        <section id="CardStats" class="card-panel hiden content white-box-shadow rounded d-flex justify-content-center">
+            <div class="col-12 pt-5">
+                <div class="h2 mt-5 mb-4 offset-1">Estadístiques</div>
+                <div id="CardStatsContent">
+                    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+                    <div id="piechart" style="width: 900px; height: 350px;"></div>
+                </div>
             </div>
+        </section>
+    </div>
+    <!-- alert -->
+    <div class="ms-auto">
+        <div style="padding: 5px; display: none;" id="error">
+            <div id="inner-message" class="alert alert-success fixed-top-right" role="alert">asd</div>
         </div>
-    </div> -->
+    </div>
 </div>
 
-<!-- Modal Coonfirm Category -->
+<!-- Modal ConfirmCategory -->
 <div class="modal" id="ChangeCategory" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -85,7 +97,7 @@
     </div>
   </div>
 </div>
-<!-- Modal User Info -->
+<!-- Modal UserInfo -->
 <div class="modal" id="UserInfo" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -94,9 +106,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <div id="UserInfoContent">
-
-        </div>
+        <div id="UserInfoContent"></div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Tanca</button>

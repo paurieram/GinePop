@@ -18,6 +18,7 @@ class CreateCategoriesTable extends Migration
             $table->string('name', 255);
             $table->string('image', 255)->nullable();
             $table->integer('state')->default(0);
+            $table->integer('views')->default(0);
             $table->timestamps();
         });
     }

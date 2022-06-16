@@ -50,13 +50,13 @@ $(function () {
                         +'</td><td><u class="UserInfoLink ptr" data-bs-toggle="modal" data-bs-target="#UserInfo" inst="'
                         +user.instagram+'" what="'+user.whatsapp+'" opt="'+user.o_contact+'" nam="'+user.name+'">Veure</u></td>';
                         if (user.state == 0){
-                            htm += '<td><select class="customimput auto-user-save" id="'+user.id+'"><option value="0" selected>activat</option><option value="2">banned</option><option value="3">admin</option><option value="4">desactivat</option></select></td></tr>';
+                            htm += '<td><select class="customimput auto-user-save" id="'+user.id+'"><option value="0" selected>activat</option><option value="2">banned</option><option value="3">admin</option></select></td></tr>';
                         }else if(user.state == 1){
-                            // htm += '<td><select class="customimput auto-user-save" id="'+user.id+'"><option value="0">activat</option><option value="2">banned</option><option value="3">admin</option><option value="4">desactivat</option></select></td></tr>';
+                            // htm += '<td><select class="customimput auto-user-save" id="'+user.id+'"><option value="0">activat</option><option value="2">banned</option><option value="3">admin</option></select></td></tr>';
                         }else if(user.state == 2){
-                            htm += '<td><select class="customimput auto-user-save" id="'+user.id+'"><option value="0">activat</option><option value="2" selected>banned</option><option value="3">admin</option><option value="4">desactivat</option></select></td></tr>';
+                            htm += '<td><select class="customimput auto-user-save" id="'+user.id+'"><option value="0">activat</option><option value="2" selected>banned</option><option value="3">admin</option></select></td></tr>';
                         }else if(user.state == 3){
-                            htm += '<td><select class="customimput auto-user-save" id="'+user.id+'"><option value="0">activat</option><option value="2">banned</option><option value="3" selected>admin</option><option value="4">desactivat</option></select></td></tr>';
+                            htm += '<td><select class="customimput auto-user-save" id="'+user.id+'"><option value="0">activat</option><option value="2">banned</option><option value="3" selected>admin</option></select></td></tr>';
                         }else if(user.state == 4){
                             htm += '<td><select class="customimput auto-user-save" id="'+user.id+'"><option value="0">activat</option><option value="2">banned</option><option value="3">admin</option><option value="4" selected>desactivat</option></select></td></tr>';
                         }
@@ -71,20 +71,20 @@ $(function () {
         });
     });   
 /*
- *  Show all users card
+ *  Save users
  */
-    $('.auto-user-save').on('change', function () {
-        $(this).attr('id');
-        $.ajax({
-            type: "put",
-            url: "url",
-            data: {},
-            dataType: "json",
-            success: function (response) {
-                console.log(response);
-            }
-        });
-    });
+    // $('.auto-user-save').on('change', function () {
+    //     $(this).attr('id');
+    //     $.ajax({
+    //         type: "put",
+    //         url: "url",
+    //         data: {},
+    //         dataType: "json",
+    //         success: function (response) {
+    //             // console.log(response);
+    //         }
+    //     });
+    // });
 /* 
  *  Show all categories card
  */
@@ -97,7 +97,6 @@ $(function () {
             url: "/categories",
             dataType: "json",
             success: function (response) {
-                console.log(response);
                 if (categorylen < response.length){
                     categorylen = response.length;
                     htm = '';
@@ -116,36 +115,65 @@ $(function () {
 
                     });
                     $('#categorycontent').append(htm);
-                    addcategoryevent();
+                    /**
+                     * Create category update event
+                     */
+                    $('.save-category-changes').on('click', function () {
+                        categorydata = {'_method': 'PUT','_token': $('#ChangeCategory > div:nth-child(1) > div:nth-child(1) > div:nth-child(3) > input:nth-child(2)').val(), 'id': $(this).attr('id'), 'state': $('#s'+$(this).attr("id")+' option:selected').val()};
+                    });
+                    /**
+                     * Create category save event
+                     */
+                    $('.send-category-changes').on('click', function () {
+                        /*
+                         *  Send data to db
+                         */
+                        $.ajax({
+                            type: "post",
+                            url: "/categories/"+categorydata.id,
+                            data: categorydata,
+                            dataType: "text",
+                            success: function () {
+                                categorydata = {};
+                                $('#error').show().fadeOut(3000);
+                                $('#inner-message').text('Cambiat Correctament!');
+                            }
+                        });
+                    });
                 }
             }
         });
     });
 
-/**
- * Create category update request
- */
-    function addcategoryevent(){
-        $('.save-category-changes').on('click', function () {
-            categorydata = {'_method': 'PUT','_token': $('#ChangeCategory > div:nth-child(1) > div:nth-child(1) > div:nth-child(3) > input:nth-child(2)').val(), 'id': $(this).attr('id'), 'state': $('#s'+$(this).attr("id")+' option:selected').val()};
-            $('.send-category-changes').on('click', function () {
-                sendCategory();
-            });
-        });
-    }
-/*
- *  Send data to db
- */
-    function sendCategory() {
+    google.charts.load('current', {'packages':['corechart']});
+    google.charts.setOnLoadCallback(drawChart);
+    function drawChart() {
+        var data = new google.visualization.DataTable();
+        let arr = [];
         $.ajax({
-            type: "post",
-            url: "/categories/"+categorydata.id,
-            data: categorydata,
+            type: "get",
+            url: "/categories",
             dataType: "json",
-            success: function () {
-                categorydata = {};
-                $('#inner-message').text('Cambiat Correctament').show().fadeOut(2);
+            success: function (response) {
+                arr[0] = ['Categoria', 'Clicks'];
+                response.forEach(category => {
+                    arr.push([category.name, parseInt(category.views)]);
+                });
+                var data = google.visualization.arrayToDataTable(arr);
+                var options = {title: 'Clicks per Categoria','width':900,'height':400, pieSliceTextStyle: {color: 'black'},
+                pieSliceText: 'label',};
+                var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+                chart.draw(data, options);
             }
         });
+        
     }
+    /* 
+     *  Show create category card
+     */
+    $('#BtnStats').on('click', function () {
+        reset();
+        $(this).addClass('fixed-left');
+        $('#CardStats').removeClass('hiden');
+    });
 });
