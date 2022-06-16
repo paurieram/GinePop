@@ -1,11 +1,12 @@
 @extends('master')
 
 @section('body')
+<script src="/js/register.js"></script>
 <div class="col-lg-6 offset-lg-3 col-md-8 offset-md-2 col-10 offset-1 my-5" style="border-radius: 10px; background-color: white; box-shadow: 0px 0px 5px #000;">
 
     <h1 class="px-5 pt-4 h1"><b>Registre't</b></h1>
 
-    <form method="POST" action="{{ route('register') }}" class="px-5 pt-4">
+    <form id="registerform" method="POST" action="{{ route('register') }}" class="px-5 pt-4">
         @csrf
         <div class="form-floating mb-3">
             <x-jet-input id="name" class="form-control" style="box-shadow: 0px 0px 3px #aaa !important" type="text" name="name" :value="old('name')" required autofocus autocomplete="name"/>
@@ -49,7 +50,8 @@
             </x-jet-label>
         </div>
         @endif
-        <x-jet-validation-errors class="mt-4 mx-2" />
+        <x-jet-validation-errors class="mt-4 mx-2" id="validationerr" />
+        <div id="mailvalidation" style="display: none; color: red;" class="mt-0 mx-2"></div>
 
         <div class="flex items-center justify-end my-4">
             <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
