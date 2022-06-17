@@ -12,7 +12,7 @@
             </div>
             <!-- Search bar -->
             <form id="searchform" class="d-flex col-xl-9 col-lg-8 col-md-9 col-9 py-2 m-1">
-                <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+                <input id="search"  name="search" class="form-control" type="search" placeholder="Buscar Items" aria-label="Search">
                 <a><svg class="searchIcon" width="2.2em" height="2.2em" class="icon icon--search" viewBox="0 0 480 480">
                         <path transform="rotate(-45, 328, 222)" fill="none" stroke="grey" stroke-width="50" stroke-linecap="round" d="M0,10 m250,250 a110,110 0 1,0-1,0 l0,140"></path>
                     </svg>
@@ -61,12 +61,15 @@
                             <x-jet-dropdown-link href="{{ route('items') }}">
                                 {{ __('Veure Productes') }}
                             </x-jet-dropdown-link>
+                            <x-jet-dropdown-link href="{{ route('items') }}">
+                                {{ __('Meus Productes') }}
+                            </x-jet-dropdown-link>
 
                             <div class="border-t border-gray-100"></div>
 
                             <!-- Account Management -->
                             <div class="block px-4 py-2 text-xs text-gray-400">
-                                {{ __('Gestionar Compte') }}
+                                {{ __('Compte') }}
                             </div>
 
                             <x-jet-dropdown-link href="{{ route('profile.show') }}">
@@ -144,6 +147,9 @@
                 </x-jet-dropdown-link>
                 <x-jet-dropdown-link href="{{ route('items') }}">
                     {{ __('Veure Productes') }} 
+                </x-jet-dropdown-link>
+                <x-jet-dropdown-link href="{{ route('items') }}">
+                    {{ __('Meus Productes') }} 
                 </x-jet-dropdown-link>
                 <!-- Account Management -->
                 <div class="block px-4 py-2 text-xs text-gray-400">

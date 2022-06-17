@@ -25,6 +25,9 @@
         
         <x-jet-validation-errors class="mb-4"/>
         <div class="flex items-center justify-end my-4">
+            <a class="underline text-sm text-gray-600 hover:text-gray-900 me-4" href="{{ route('login') }}">
+                {{ __('Ja tens compte?') }}
+            </a>
             <x-jet-button>
                 {{ __('Email Password Reset Link') }}
             </x-jet-button>
