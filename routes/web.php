@@ -8,6 +8,7 @@ use App\Http\Controllers\CategoriesController;
 use Illuminate\Http\Request;
 use App\Models\categories;
 use App\Models\user;
+use App\Models\items;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -20,6 +21,34 @@ use Illuminate\Support\Facades\Auth;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+// Route::get('/clicks', function () {
+//     // if(!empty(Auth::user()) && Auth::user()->state === 3){
+//     //     // return [0 => user::all(),1 => items::all()];
+//     //     $arr = [];
+//     //     for ($i=0; $i >= count(user::all()); $i++) { 
+//     //         arr
+//     //     }
+//     //     // foreach ($variable as $key => $value) {
+//     //     //     # code...
+//     //     // }
+//     // }else{
+//     //     return redirect('/');
+//     // }
+// });
+
+Route::get('/search', function (Request $request) {
+    // Get the search value from the request
+    $search = $request->input('search');
+    // Search in the title and body columns from the items table
+    $items = items::query()
+        ->where([['name', 'LIKE', "%{$search}%"], ['state', 0]])
+        ->orWhere('description', 'LIKE', "%{$search}%")
+        ->get();
+    // Return the search view with the resluts compacted
+    return view('items', ['categories' => categories::where('state', 0),'items' => $items]);
+})->name('search');
+
 
 Route::get('/', function () {
     if (!empty(Auth::user())){
@@ -50,6 +79,9 @@ Route::middleware([
     'verified'
 ])->group(function () {
     Route::get('/items',[ItemsController::class, 'index'])->name('items');
+    Route::get('/user/items', function () {
+        return view('items-user',['categories' => categories::where('state', 0),'items' => items::where(['id_seller' => Auth::user()->id, 'state' => '0'])->get()]);
+    })->name('items-user');
     Route::get('/index', function () {
         return redirect('/');
     })->name('index');

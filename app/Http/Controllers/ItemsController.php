@@ -8,6 +8,7 @@ use App\Models\items;
 use App\Models\user;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class ItemsController extends Controller
 {
@@ -25,8 +26,7 @@ class ItemsController extends Controller
                                         ->where('items.state', 0)
                                         ->groupBy('items.id_category', 'categories.name')
                                         ->get(),
-            ]);
-        // return view('items', ['items' => items::all()]);
+        ]);
     }
 
     /**
@@ -36,7 +36,7 @@ class ItemsController extends Controller
      */
     public function create()
     {
-        return view('items-add',  ['categories' => categories::all(), 'date' => date('Y-m-d h:m:s', strtotime(' + 2 years'))]);
+        return view('items-add',  ['categories' => categories::where('state', 0)->get(), 'date' => date('Y-m-d h:m:s', strtotime(' + 2 years'))]);
     }
 
     /**
@@ -77,12 +77,15 @@ class ItemsController extends Controller
         }else if($item->state == 3){
             $item->state = 'producte caducat';
         }
+        if ($item->id_seller == Auth::id()){
+
+        }
         $cat = categories::where('id', $item->id_category)->get();
         $item->id_category = $cat[0]->name;
         $usr = user::where('id', $item->id_seller)->get();
         $item->sold = items::where('id_seller', $item->id_seller)->where('state', '0')->count();
-        $item->id_seller = $usr[0]->name;
-        return view('items-view', ['item' => $item, 'imatges' => imgs::all()]);
+        $item->name = $usr[0]->name;
+        return view('items-view', ['item' => $item, 'imatges' => imgs::all(), 'user'=> Auth::user()]);
     }
 
     /**

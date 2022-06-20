@@ -8,9 +8,9 @@
             <section id="BtnCreateCategory" class="white-box-shadow rounded mb-4 mv-left p-2">
                 <a class="h4">Crear Categoria</a>
             </section>
-            <section id="BtnCreateUser" class="white-box-shadow rounded mb-4 mv-left p-2">
+            <!-- <section id="BtnCreateUser" class="white-box-shadow rounded mb-4 mv-left p-2">
                 <a class="h4">Crear Usuari</a>
-            </section>
+            </section> -->
             <section id="BtnShowUsers" class="white-box-shadow rounded mb-4 mv-left p-2">
                 <a class="h4">Gestionar Usuaris</a>
             </section>
@@ -62,12 +62,14 @@
             </div>
         </section>
         <!-- CardStats -->
-        <section id="CardStats" class="card-panel hiden content white-box-shadow rounded d-flex justify-content-center">
+        <section id="CardStats" class="card-panel hiden stats white-box-shadow rounded d-flex justify-content-center">
             <div class="col-12 pt-5">
-                <div class="h2 mt-5 mb-4 offset-1">Estadístiques</div>
+                <div class="h1 mt-5 mb-4 offset-1">Estadístiques</div>
                 <div id="CardStatsContent">
                     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-                    <div id="piechart" style="width: 900px; height: 350px;"></div>
+                    <div id="piechart" class="mb-5"></div>
+                    <span class="ms-5 h7">Usuari / Items X Clicks</span>
+                    <div id="barchart_material"></div>
                 </div>
             </div>
         </section>

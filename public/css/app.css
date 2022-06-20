@@ -2427,3 +2427,31 @@ body {
   right: 15px;
   z-index: 1030;
 }
+.btn-outline-primary{
+  border-color: #0d6efd;
+  color: #000;
+}
+.btn-outline-primary:hover{
+  border-color: #0d6efd;
+  color: #000;
+}
+.btn-outline-danger{
+  border-color: #dc3545;
+  color: #000;
+}
+.btn-outline-danger:hover{
+  border-color: #dc3545;
+  color: #000;
+}
+.btn-outline-success{
+  border-color: #198754;
+  color: #000;
+}
+.btn-outline-success:hover{
+  border-color: #198754;
+  color: #000;
+}
+.stats{
+  min-height: 1200px;
+  width: 100%;
+}

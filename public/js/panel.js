@@ -146,9 +146,8 @@ $(function () {
     });
 
     google.charts.load('current', {'packages':['corechart']});
-    google.charts.setOnLoadCallback(drawChart);
-    function drawChart() {
-        var data = new google.visualization.DataTable();
+    google.charts.setOnLoadCallback(drawPieChart);
+    function drawPieChart() {
         let arr = [];
         $.ajax({
             type: "get",
@@ -160,14 +159,42 @@ $(function () {
                     arr.push([category.name, parseInt(category.views)]);
                 });
                 var data = google.visualization.arrayToDataTable(arr);
-                var options = {title: 'Clicks per Categoria','width':900,'height':400, pieSliceTextStyle: {color: 'black'},
+                var options = {title: 'Clicks X Categoria','width':900,'height':400, pieSliceTextStyle: {color: 'black'},
                 pieSliceText: 'label',};
                 var chart = new google.visualization.PieChart(document.getElementById('piechart'));
                 chart.draw(data, options);
             }
         });
-        
     }
+    // google.charts.load('current', {'packages':['bar']});
+    // google.charts.setOnLoadCallback(drawBarChart);
+    // function drawBarChart() {
+    //     $.ajax({
+    //         type: "get",
+    //         url: "/clicks",
+    //         dataType: "json",
+    //         success: function (response) {
+    //             console.log(response);
+    //         }
+    //     });
+    //   var data = google.visualization.arrayToDataTable([
+    //     ['Usuari', 'Clicks','Clicks'],
+    //     ['2014', 1000,1020],
+    //     ['2015', 1170 ,''],
+    //     ['2016', 660,''],
+    //     ['2017', 1030,'']
+    //   ]);
+
+    //   var options = {
+    //     chart: {
+    //       title: '',
+    //     },'width':900,'height':400,bars: 'horizontal',vAxis: {textPosition: 'out', title: ''},legend: {  position: 'none'},
+    //   };
+
+    //   var chart = new google.charts.Bar(document.getElementById('barchart_material'));
+    //   chart.draw(data, google.charts.Bar.convertOptions(options));
+    // }
+
     /* 
      *  Show create category card
      */
