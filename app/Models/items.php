@@ -18,4 +18,8 @@ class items extends Model
     public function portrait () {
         return $this->hasOne(imgs::class, 'id_item', 'id');
     }
+
+    public function category () {
+        return $this->belongsTo(categories::class, 'id_category', 'id');
+    }
 }

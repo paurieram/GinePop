@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\categories;
 use App\Models\imgs;
 use App\Models\items;
+use App\Models\user;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class ItemsController extends Controller
 {
@@ -16,7 +19,14 @@ class ItemsController extends Controller
      */
     public function index()
     {
-        return view('items', ['items' => items::all()]);
+        return view('items', [
+            'items' => items::where('state', 0)->get(),
+            'categories' => items::select(DB::raw('items.id_category, categories.name, COUNT(items.id) as itemsxcat'))
+                                        ->join('categories','items.id_category','=','categories.id')
+                                        ->where('items.state', 0)
+                                        ->groupBy('items.id_category', 'categories.name')
+                                        ->get(),
+        ]);
     }
 
     /**
@@ -26,7 +36,7 @@ class ItemsController extends Controller
      */
     public function create()
     {
-        return view('items-add',  ['categories' => Categories::all(), 'date' => date('Y-m-d h:m:s', strtotime(' + 2 years'))]);
+        return view('items-add',  ['categories' => categories::where('state', 0)->get(), 'date' => date('Y-m-d h:m:s', strtotime(' + 2 years'))]);
     }
 
     /**
@@ -40,10 +50,10 @@ class ItemsController extends Controller
         $item = items::create($request->all());
 
         for($i = 0; $request->hasFile('url'.$i); $i++) {
-            $ruta = $request->file('url'.$i)->storePublicly('img', 'public');
+            $ruta = $request->file('url'.$i)->storePublicly('img/productes', 'public');
             
-            imgs::create(["url" => $ruta, "id_item" => $item->id]);
-            echo $i;
+            imgs::create(["url" => "/".$ruta, "id_item" => $item->id]);
+            // echo $i;
         }
 
         return redirect('/items');
@@ -57,9 +67,25 @@ class ItemsController extends Controller
      */
     public function show(items $item)
     {
-        // return $item;
-        return view('items-view', ['items' => $item, 'imatges' => imgs::all()]);
-        // return view('products-view', ['id' => $request]);
+        items::where('id', $item->id)->update(array('views' => $item->views+1));
+        if ($item->state == 0){
+            $item->state = 'producte a la venda';
+        }else if($item->state == 1){
+            $item->state = 'producte venut';
+        }else if($item->state == 2){
+            $item->state = 'producte desactivat';
+        }else if($item->state == 3){
+            $item->state = 'producte caducat';
+        }
+        if ($item->id_seller == Auth::id()){
+
+        }
+        $cat = categories::where('id', $item->id_category)->get();
+        $item->id_category = $cat[0]->name;
+        $usr = user::where('id', $item->id_seller)->get();
+        $item->sold = items::where('id_seller', $item->id_seller)->where('state', '0')->count();
+        $item->name = $usr[0]->name;
+        return view('items-view', ['item' => $item, 'imatges' => imgs::all(), 'user'=> Auth::user()]);
     }
 
     /**

@@ -16,6 +16,7 @@
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <link rel="stylesheet" href="/css/app.css">
     <script src="/js/app.js"></script>
+    <script src="/js/items.js"></script>
     <title>GinePop</title>
 </head>
 
@@ -36,6 +37,7 @@
     </footer>
     <script src="/js/slideshow.js"></script>
     <script src="/js/img.js"></script>
+    <script src="/js/modal.js"></script>
 </body>
 
 </html>
