@@ -3,7 +3,6 @@ $(function () {
     $('#registerform').on('submit', function (e) {
         if (!$('#email').val().endsWith('@ginebro.cat')){
             e.preventDefault();
-            console.log($('#validationerr').length);
             if($('#validationerr').length > 0){
                 $('#validationerr ul').prepend('<li>El correu ha de ser @ginebro.cat</li>');
             }else{

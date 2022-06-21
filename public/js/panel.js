@@ -135,7 +135,7 @@ $(function () {
                             dataType: "text",
                             success: function () {
                                 categorydata = {};
-                                $('#error').show().fadeOut(3000);
+                                $('#error').show().fadeOut(10000);
                                 $('#inner-message').text('Cambiat Correctament!');
                             }
                         });

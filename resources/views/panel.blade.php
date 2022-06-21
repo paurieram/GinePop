@@ -77,7 +77,7 @@
     <!-- alert -->
     <div class="ms-auto">
         <div style="padding: 5px; display: none;" id="error">
-            <div id="inner-message" class="alert alert-success fixed-top-right" role="alert">asd</div>
+            <div id="inner-message" class="alert alert-success fixed-top-right" role="alert"></div>
         </div>
     </div>
 </div>

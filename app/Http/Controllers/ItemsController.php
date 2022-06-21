@@ -83,8 +83,9 @@ class ItemsController extends Controller
         $cat = categories::where('id', $item->id_category)->get();
         $item->id_category = $cat[0]->name;
         $usr = user::where('id', $item->id_seller)->get();
+        $item->usr = $usr[0]->name;
         $item->sold = items::where('id_seller', $item->id_seller)->where('state', '0')->count();
-        $item->name = $usr[0]->name;
+        $item->name = items::where('id', $item->id)->where('state', '0')->get('name')[0]->name;
         return view('items-view', ['item' => $item, 'imatges' => imgs::all(), 'user'=> Auth::user()]);
     }
 
@@ -106,9 +107,16 @@ class ItemsController extends Controller
      * @param  \App\Models\items  $items
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, items $items)
+    public function update(Request $request, items $item)
     {
-        //
+        // return $item;
+        if ($request->op == 'st'){
+            $item->update($request->all());
+            return json_encode(['success' => 1]);
+        }else{
+            return json_encode(['success' => 0]);
+        }
+
     }
 
     /**

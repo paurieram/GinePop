@@ -9,17 +9,17 @@
                     <div class="card mb-3 " style="border-radius:10px">
                         <div class="card-header d-flex">
                             <div class="card-user-detail">
-                                <span id="seller" class="h3 card-title justify-content-start">{{ $item->name }}</span>
+                                <span id="seller" id_item="{{ $item->id }}" class="h3 card-title justify-content-start">{{ $item->usr }}@csrf</span>
                                 @if ($item->sold == 1)
                                 <span class="text-muted">{{ $item->sold }} Producte a la venda</span>
                                 @else
                                 <span class="text-muted">{{ $item->sold }} Productes a la venda</span>
                                 @endif
                             </div>
-                            @if($user->id == $item->id_seller)
+                            @if(isset($user) && $user->id == $item->id_seller)
                             <button class="ms-auto btn btn-sm btn-outline-primary my-auto" data-bs-toggle="modal" data-bs-target="#manageModal">Gestionar</button>
                             <button class="ms-2 btn btn-sm my-auto" data-bs-toggle="modal" data-bs-target="#contactModal">Contacte</button>
-                            @else
+                            @elseif (isset($user))
                             <button class="ms-auto btn btn-sm my-auto" data-bs-toggle="modal" data-bs-target="#contactModal">Contacte</button>
                             @endif
                         </div>
@@ -54,6 +54,7 @@
         </div>
     </div>
     <!-- Contact Modal -->
+    @if (isset($user))
     <div class="modal" id="contactModal" tabindex="-1" aria-labelledby="contactModalLabel" aria-hidden="true">
         <div class="modal-dialog  modal-dialog-centered">
             <div class="modal-content">
@@ -81,9 +82,9 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body d-flex justify-content-center">
-                    <div class="btn btn-outline-primary"><b>Editar</b></div>
-                    <div class="mx-2 btn btn-outline-danger"><b>Esborrar</b></div>
-                    <div class="btn btn-outline-success"><b>Venut!</b></div>
+                    <div id="edit" class="btn btn-outline-primary"><b>Editar</b></div>
+                    <div id="delete" class="mx-2 btn btn-outline-danger"><b>Esborrar</b></div>
+                    <div id="sold" class="btn btn-outline-success"><b>Venut!</b></div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring focus:ring-gray-300 disabled:opacity-25 transition ml-4 nav-link btn btn-outline-success" data-bs-dismiss="modal">Close</button>
@@ -92,4 +93,5 @@
         </div>
     </div>
 </div>
+@endif
 @endsection
