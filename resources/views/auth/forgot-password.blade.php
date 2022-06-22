@@ -5,7 +5,7 @@
     <h1 class="px-5 pt-4 h1"><b>Recuperar contrasenya</b></h1>
     <div class="mb-4 px-5 pt-4 text-sm text-gray-600">
         {{ __("Has oblidat la contrasenya? Cap problema. Només digue'ns el teu mail i t'enviarem un enllaç de recuperació per crear una nova.") }}
-    </div>
+    <br><b><u><a href='https://mail.google.com' target='_blank'>Accedir a Gmail</a></u></b></div>
 
     @if (session('status'))
     <div class="ms-auto">

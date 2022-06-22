@@ -105,7 +105,7 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'rubenrecolons@ginebro.cat'),
+        'address' => env('MAIL_FROM_ADDRESS', 'no-reply@ginebro.cat'),
         'name' => env('MAIL_FROM_NAME', 'GinePop'),
     ],
         

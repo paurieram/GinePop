@@ -1,5 +1,5 @@
 $(function () {
-    $('#validationerr div:first-child').hide();
+    $('#validationerr div:first-child').addClass('hidden');
     $('#lupa').on('click', function () {
         $('#searchform').trigger('submit');
     });
@@ -25,7 +25,6 @@ $(function () {
     
 });
 function succes(){
-    // $('#succont').hide();
     $('#inner-message').text($('#succont').text());
-    $('#error').show().fadeOut(10000);
+    $('#error').show().delay(5000).fadeOut(5000);
 }

@@ -47,7 +47,7 @@ Route::get('/search', function (Request $request) {
         ->get();
     // Return the search view with the resluts compacted
     return view('items', ['categories' => categories::where('state', 0),'items' => $items]);
-})->name('search');
+})->name('search')->middleware('verified');
 
 
 Route::get('/', function () {
@@ -67,18 +67,18 @@ Route::get('/', function () {
         }
     }
     return view('index', ['categories' => categories::whereNotNull('image')->get()]);
-});
+})->middleware('verified');
 
-Route::resource('/items', ItemsController::class);
+Route::resource('/items', ItemsController::class)->middleware('verified');
 Route::resource('/logs', LogsListController::class);
-Route::resource('/categories', CategoriesController::class);
+Route::resource('/categories', CategoriesController::class)->middleware('verified');
 
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
     'verified'
 ])->group(function () {
-    Route::get('/items',[ItemsController::class, 'index'])->name('items');
+    Route::get('/items',[ItemsController::class, 'index'])->name('items')->middleware('verified');
     Route::get('/user/items', function () {
         return view('items-user',['categories' => categories::where('state', 0),'items' => items::where(['id_seller' => Auth::user()->id, 'state' => '0'])->get()]);
     })->name('items-user');

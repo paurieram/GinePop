@@ -4,6 +4,8 @@ namespace App\Providers;
 
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Auth\Notifications\VerifyEmail;
+use Illuminate\Notifications\Messages\MailMessage;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -24,7 +26,14 @@ class AuthServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->registerPolicies();
-
-        //
+        VerifyEmail::toMailUsing(function ($notifiable, $url) {
+            return (new MailMessage)
+                ->subject('Confirmar Email')
+                ->greeting('Un últim pas...')
+                ->line("Clica el botó per verificar l'Email")
+                ->action('Verificar Email', $url)
+                ->line('Si no has realitzat aquesta sol·licitud, no es requereix realitzar cap altra acció.')
+                ->salutation('Salutacions, '. config('app.name'));
+        });
     }
 }

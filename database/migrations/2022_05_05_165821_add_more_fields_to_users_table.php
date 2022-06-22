@@ -27,7 +27,8 @@ class AddMoreFieldsToUsersTable extends Migration
                 'email' => 'informaticaescola@ginebro.cat',
                 'password' => '$2y$10$BFpXSg4b4UFYfMeCZ1L4jugMpgeKTqYd8OAiGX7JiNkwX4Wb08kZ2',
                 'surname' => 'admin',
-                'state' => '3'
+                'state' => '3',
+                'email_verified_at' => '2022-01-01'
             )   
         );
         DB::table('categories')->insert([
