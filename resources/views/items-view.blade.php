@@ -17,7 +17,9 @@
                                 @endif
                             </div>
                             @if(isset($user) && $user->id == $item->id_seller)
-                            <button class="ms-auto btn btn-sm btn-outline-primary my-auto" data-bs-toggle="modal" data-bs-target="#manageModal">Gestionar</button>
+                            <button id="edit" class="ms-auto btn btn-sm btn-outline-primary my-auto" data-bs-toggle="modal" data-bs-target="#manageModal"><b>Editar</b></button>
+                            <button id="delete" class="ms-2 btn btn-sm btn-outline-danger my-auto"><b>Esborrar</b></button>
+                            <button id="sold" class="ms-2 btn btn-sm btn-outline-success my-auto"><b>Venut!</b></button>
                             <button class="ms-2 btn btn-sm my-auto" data-bs-toggle="modal" data-bs-target="#contactModal">Contacte</button>
                             @elseif (isset($user))
                             <button class="ms-auto btn btn-sm my-auto" data-bs-toggle="modal" data-bs-target="#contactModal">Contacte</button>
@@ -44,7 +46,7 @@
                             <h5 class="h1 card-title product-title" id="product-price">{{ $item->price }} €</h5>
                             <h1 class="h2 card-title product-title" id="product-title">{{ $item->name }}</h1>
                             <p class="card-textproduct-description" id="product-state">Estat: {{ $item->state }}</p>
-                            <p class="card-textproduct-description" id="product-category">Categoria: {{ $item->id_category }}</p>
+                            <p class="card-textproduct-description" id="product-category">Categoria: {{ $item->category_name }}</p>
                             <p class="card-textproduct-description" id="product-location">Localització: {{ $item->location }}</p>
                             <p class="card-textproduct-description" id="product-description">Descripció: {{ $item->description }}</p>
                         </div>
@@ -82,16 +84,68 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body d-flex justify-content-center">
-                    <div id="edit" class="btn btn-outline-primary"><b>Editar</b></div>
-                    <div id="delete" class="mx-2 btn btn-outline-danger"><b>Esborrar</b></div>
-                    <div id="sold" class="btn btn-outline-success"><b>Venut!</b></div>
+                    <form action="/items/{{$item->id}}" runat="server" method="post" class="form-floating px-5 pt-4" enctype="multipart/form-data">
+                        @csrf
+                        @method('PUT')
+                        <div class="row g-1">
+                            <div class="form-floating mb-3 col">
+                                <x-jet-input id="name" class="form-control customshadow" type="text" name="name" value="{{$item->name}}" required autofocus autocomplete="name" />
+                                <x-jet-label for="name" value="{{ __('Títol') }}" />
+                            </div>
+                            <div class="form-floating mb-3 col">
+                                <x-jet-input id="price" class="form-control customshadow" type="number" name="price" value="{{$item->price}}" required autofocus autocomplete="price" />
+                                <x-jet-label for="price" value="{{ __('Preu') }}" />
+                            </div>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <select class="form-select customshadow" id="id_category" name="id_category" aria-label="Floating label select example">
+                                <option selected>Selecciona categoria</option>
+                                    @foreach ($categories as $category)
+                                        @if($category->id == $item->id_category)
+                                        <option value="{{$category->id}}" selected>{{$category->name}}</option>
+                                        @else
+                                        <option value="{{$category->id}}">{{$category->name}}</option>
+                                        @endif
+                                    @endforeach
+                            </select>
+                            <label for="id_category">Categoria</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <textarea id="description" class="form-control customshadow" name="description" required autofocus autocomplete="description">{{$item->description}}</textarea>
+                            <x-jet-label for="description" value="{{ __('Descripció') }}" />
+                        </div>
+                        <p class="mb-1">Afegeix les imatges desitjades (max. 8)</p>
+                        <div class="mb-3">
+                            <input accept="image/*" class="imgInp form-control" type='file' name="url0" id="imgInp0" />
+                            <input accept="image/*" class="imgInp form-control" type='file' name="url1" id="imgInp1" style="visibility:hidden; position:absolute;" />
+                            <input accept="image/*" class="imgInp form-control" type='file' name="url2" id="imgInp2" style="visibility:hidden; position:absolute;" />
+                            <input accept="image/*" class="imgInp form-control" type='file' name="url3" id="imgInp3" style="visibility:hidden; position:absolute;" />
+                            <input accept="image/*" class="imgInp form-control" type='file' name="url4" id="imgInp4" style="visibility:hidden; position:absolute;" />
+                            <input accept="image/*" class="imgInp form-control" type='file' name="url5" id="imgInp5" style="visibility:hidden; position:absolute;" />
+                            <input accept="image/*" class="imgInp form-control" type='file' name="url6" id="imgInp6" style="visibility:hidden; position:absolute;" />
+                            <input accept="image/*" class="imgInp form-control" type='file' name="url7" id="imgInp7" style="visibility:hidden; position:absolute;" />
+                        </div>
+                        <div id="blah" style="background-color: #e4ebe6; border-radius:10px;" class="my-3">
+                        </div>
+                        <div class="form-floating mb-3 col">
+                            <x-jet-input id="location" class="form-control customshadow" type="text" name="location" value="{{$item->location}}" required autofocus autocomplete="location" />
+                            <x-jet-label for="location" value="{{ __('Ubicació') }}" />
+                        </div>
+                        <div class="flex items-center justify-end my-4">
+                            <x-jet-button class="ml-4 nav-link btn btn-outline-success">
+                                {{ __('Guardar canvis') }}
+                            </x-jet-button>
+                        </div>
+                        <input type="hidden" name="id_seller" value="{{Auth::user()->id}}">
+                        <input type="hidden" name="op" value="fm">
+                    </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring focus:ring-gray-300 disabled:opacity-25 transition ml-4 nav-link btn btn-outline-success" data-bs-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
-    </div>
+    </div> 
+    @endif
 </div>
-@endif
 @endsection

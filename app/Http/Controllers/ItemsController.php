@@ -48,14 +48,10 @@ class ItemsController extends Controller
     public function store(Request $request)
     {
         $item = items::create($request->all());
-
         for($i = 0; $request->hasFile('url'.$i); $i++) {
             $ruta = $request->file('url'.$i)->storePublicly('img/productes', 'public');
-            
             imgs::create(["url" => "/".$ruta, "id_item" => $item->id]);
-            // echo $i;
         }
-
         return redirect('/items');
     }
 
@@ -81,12 +77,12 @@ class ItemsController extends Controller
 
         }
         $cat = categories::where('id', $item->id_category)->get();
-        $item->id_category = $cat[0]->name;
+        $item->category_name = $cat[0]->name;
         $usr = user::where('id', $item->id_seller)->get();
         $item->usr = $usr[0]->name;
         $item->sold = items::where('id_seller', $item->id_seller)->where('state', '0')->count();
         $item->name = items::where('id', $item->id)->where('state', '0')->get('name')[0]->name;
-        return view('items-view', ['item' => $item, 'imatges' => imgs::all(), 'user'=> Auth::user()]);
+        return view('items-view', ['item' => $item, 'imatges' => imgs::all(), 'user'=> Auth::user(),'categories'=>categories::where('state', 0)->get()]);
     }
 
     /**
@@ -110,9 +106,16 @@ class ItemsController extends Controller
     public function update(Request $request, items $item)
     {
         // return $item;
-        if ($request->op == 'st'){
+        if ($request->op == 'rq'){
             $item->update($request->all());
             return json_encode(['success' => 1]);
+        }else if ($request->op == 'fm'){
+            $item->update($request->all());
+            for($i = 0; $request->hasFile('url'.$i); $i++) {
+                $ruta = $request->file('url'.$i)->storePublicly('img/productes', 'public');
+                imgs::create(["url" => "/".$ruta, "id_item" => $item->id]);
+            }
+            return redirect('/items');
         }else{
             return json_encode(['success' => 0]);
         }

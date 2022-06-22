@@ -112,13 +112,13 @@
 <summary>Estats</summary>
 <br>
     
-| **users** | **state** |  | **items** | **state** |  | **category** | **state** |
-|---|---|---|---|---|---|---|---|
-| 0 | normal |  | 0 | normal |  | 0 | active |
-| 1 | timeout |  | 1 | sold |  | 1 | disabled |
-| 2 | banned |  | 2 | disabled |  |  |  |
-| 3 | admin |  | 3 | expired |  |  |  |
-| 4 | disabled |  | | |  |  |  |
+| **users** | **state** | **description** | **items** | **state** | **description** | **category** | **state** | **description** |
+|---|---|---|---|---|---|---|---|---|
+| 0 | normal | ``default`` | 0 | normal | ``default`` | 0 | active | ``default`` |
+| 1 | timeout | ``timeout by admin`` | 1 | sold | ``user marked as sold`` | 1 | disabled | ``disabled by admin`` |
+| 2 | banned | ``disabled by admin`` | 2 | disabled | ``disabled by admin`` |  |  |  |
+| 3 | admin | ``admin`` | 3 | expired | ``disabled by time`` |  |  |  |
+| 4 | disabled | ``disabled by application`` | 4 | deleted | ``disabed by user`` |  |  |  |
     
 </details>
 
