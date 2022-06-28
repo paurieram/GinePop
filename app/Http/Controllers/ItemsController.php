@@ -19,6 +19,12 @@ class ItemsController extends Controller
      */
     public function index()
     {
+        $i = items::where('state', 0)->get();
+        foreach ($i as $key => $value) {
+            if (date('Y-m-d',time()) > $value->expiration_date){
+                items::where('id', $value->id)->update(['state'=>3]);
+            }
+        }
         return view('items', [
             'items' => items::where('state', 0)->get(),
             'categories' => items::select(DB::raw('items.id_category, categories.name, COUNT(items.id) as itemsxcat'))
@@ -63,26 +69,29 @@ class ItemsController extends Controller
      */
     public function show(items $item)
     {
-        items::where('id', $item->id)->update(array('views' => $item->views+1));
-        if ($item->state == 0){
-            $item->state = 'producte a la venda';
-        }else if($item->state == 1){
-            $item->state = 'producte venut';
-        }else if($item->state == 2){
-            $item->state = 'producte desactivat';
-        }else if($item->state == 3){
-            $item->state = 'producte caducat';
+        if ($item->state == 0 || Auth::user()->state == 3){
+            items::where('id', $item->id)->update(array('views' => $item->views+1));
+            if ($item->state == 0){
+                $item->state = 'producte a la venda';
+            }else if($item->state == 1){
+                $item->state = 'producte venut';
+            }else if($item->state == 2){
+                $item->state = 'producte desactivat';
+            }else if($item->state == 3){
+                $item->state = 'producte caducat';
+            }
+            // if ($item->id_seller == Auth::id()){
+            // }
+            $cat = categories::where('id', $item->id_category)->get();
+            $item->category_name = $cat[0]->name;
+            $usr = user::where('id', $item->id_seller)->get();
+            $item->usr = $usr[0]->name;
+            $item->sold = items::where('id_seller', $item->id_seller)->where('state', '0')->count();
+            $item->name = items::where('id', $item->id)->where('state', '0')->get('name')[0]->name;
+            return view('items-view', ['item' => $item, 'imatges' => imgs::all(), 'user'=> Auth::user(),'categories'=>categories::where('state', 0)->get()]);
+        }else{
+            return redirect('/');
         }
-        if ($item->id_seller == Auth::id()){
-
-        }
-        $cat = categories::where('id', $item->id_category)->get();
-        $item->category_name = $cat[0]->name;
-        $usr = user::where('id', $item->id_seller)->get();
-        $item->usr = $usr[0]->name;
-        $item->sold = items::where('id_seller', $item->id_seller)->where('state', '0')->count();
-        $item->name = items::where('id', $item->id)->where('state', '0')->get('name')[0]->name;
-        return view('items-view', ['item' => $item, 'imatges' => imgs::all(), 'user'=> Auth::user(),'categories'=>categories::where('state', 0)->get()]);
     }
 
     /**
@@ -105,7 +114,6 @@ class ItemsController extends Controller
      */
     public function update(Request $request, items $item)
     {
-        // return $item;
         if ($request->op == 'rq'){
             $item->update($request->all());
             return json_encode(['success' => 1]);
@@ -119,7 +127,6 @@ class ItemsController extends Controller
         }else{
             return json_encode(['success' => 0]);
         }
-
     }
 
     /**
@@ -128,9 +135,9 @@ class ItemsController extends Controller
      * @param  \App\Models\items  $items
      * @return \Illuminate\Http\Response
      */
-    public function destroy(items $items)
-    {
-        //
-    }
+    // public function destroy(items $items)
+    // {
+    //     //
+    // }
 
 }

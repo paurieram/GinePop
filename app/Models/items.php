@@ -22,4 +22,8 @@ class items extends Model
     public function category () {
         return $this->belongsTo(categories::class, 'id_category', 'id');
     }
+
+    public function user () {
+        return $this->belongsTo(user::class, 'id_seller', 'id');
+    }
 }

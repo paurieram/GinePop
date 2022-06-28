@@ -1,16 +1,16 @@
 <x-guest-layout>
     <x-jet-authentication-card>
         <x-slot name="logo">
-            <x-jet-authentication-card-logo />
+            <img src="{{ asset('favicon.ico') }}" />
         </x-slot>
 
         <div class="mb-4 text-sm text-gray-600">
-            {{ __('Thanks for signing up! Before getting started, could you verify your email address by clicking on the link we just emailed to you? If you didn\'t receive the email, we will gladly send you another.') }}
+            {{ __("Gràcies per registrar-te! Abans de començar, podries confirmar el teu correu electrònic clicant en l'enllaç que t'acabem d'enviar? Si no has rebut el correu electrònic, t'enviarem un altre.") }}
         </div>
 
         @if (session('status') == 'verification-link-sent')
             <div class="mb-4 font-medium text-sm text-green-600">
-                {{ __('A new verification link has been sent to the email address you provided during registration.') }}
+                {{ __('S\'ha enviat un enllaç de verificació nou a l\'adreça electrònica que vau proporcionar durant el registre.') }}
             </div>
         @endif
 
@@ -20,16 +20,15 @@
 
                 <div>
                     <x-jet-button type="submit">
-                        {{ __('Resend Verification Email') }}
+                        {{ __('Reenviar correu') }}
                     </x-jet-button>
                 </div>
             </form>
 
             <form method="POST" action="{{ route('logout') }}">
                 @csrf
-
                 <button type="submit" class="underline text-sm text-gray-600 hover:text-gray-900">
-                    {{ __('Log Out') }}
+                    {{ __('Sortir') }}
                 </button>
             </form>
         </div>

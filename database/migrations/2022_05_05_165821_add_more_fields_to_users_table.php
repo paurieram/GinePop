@@ -32,10 +32,10 @@ class AddMoreFieldsToUsersTable extends Migration
             )   
         );
         DB::table('categories')->insert([
-            ['name' => 'bicis', 'image' => '/img/categories/categoria.png', 'state' => '0', 'created_at' => '2022-01-01'],
-            ['name' => 'motxiles', 'image' => '/img/categories/categoria.png', 'state' => '0', 'created_at' => '2022-01-01'],
-            ['name' => 'roba', 'image' => '/img/categories/categoria.png', 'state' => '0', 'created_at' => '2022-01-01'],
-            ['name' => 'sabates', 'image' => '/img/categories/categoria.png', 'state' => '0', 'created_at' => '2022-01-01']
+            ['name' => 'Bicis', 'image' => '/img/categories/bicis.png', 'state' => '0', 'created_at' => '2022-01-01'],
+            ['name' => 'Motxilles', 'image' => '/img/categories/motxilles.png', 'state' => '0', 'created_at' => '2022-01-01'],
+            ['name' => 'Roba', 'image' => '/img/categories/roba.png', 'state' => '0', 'created_at' => '2022-01-01'],
+            ['name' => 'Sabates', 'image' => '/img/categories/sabates.png', 'state' => '0', 'created_at' => '2022-01-01']
         ]);
         DB::table('items')->insert([
             ['name' => 'BICICLETA BTWIN ROCKRIDER DE MONTAÑA', 'price' => 180,'description' => 'ESTA COMO NUEVA NO LE FALTA NADA RUEDA DE ATRAS COMO NUEVA Y PUÑOS TAMBIEN +PITON DE REGALO','location' => 'Melilla','id_category' => '1','id_seller'=>'1','expiration_date'=>'2024-05-26'],

@@ -8,6 +8,9 @@
             <section id="BtnCreateCategory" class="white-box-shadow rounded mb-4 mv-left p-2">
                 <a class="h4">Crear Categoria</a>
             </section>
+            <section id="BtnShowCategories" class="white-box-shadow rounded mb-4 mv-left p-2">
+                <a class="h4">Gestionar Categories</a>
+            </section>
             <!-- <section id="BtnCreateUser" class="white-box-shadow rounded mb-4 mv-left p-2">
                 <a class="h4">Crear Usuari</a>
             </section> -->
@@ -20,12 +23,9 @@
             <section id="BtnStats" class="white-box-shadow rounded mb-4 mv-left p-2">
                 <a class="h4">Estadístiques</a>
             </section>
-            <section id="BtnShowCategories" class="white-box-shadow rounded mb-4 mv-left p-2">
-                <a class="h4">Gestionar Categories</a>
-            </section>
-            <section id="BtnShowCategories" class="white-box-shadow rounded mb-4 mv-left p-2">
+            <!-- <section id="BtnShowCategories" class="white-box-shadow rounded mb-4 mv-left p-2">
                 <a class="h4">Logs</a>
-            </section>
+            </section> -->
         </div>
     </div>  
     <div class="col-lg-6 offset-lg-1 col-md-6 offset-md-1 col-5 offset-1 my-5">
@@ -45,10 +45,19 @@
         </section>
         <!-- ShowCategory -->
         <section id="CardShowCategory" class="container-fluid card-panel hiden white-box-shadow rounded d-flex justify-content-center">
-            <div class="col-8 pt-5 mb-4 row">
+            <div class="col-10 pt-5 mb-4 row">
                 <div class="h2 mb-4 row">Gestionar Categories</div>
                 <table class="table" id="categorycontent">
                     <tr><th scope="col">Id</th><th scope="col">Name</th><th scope="col">Img</th><th scope="col">Updated</th><th>Visibilitat</th><th></th></tr>
+                </table>
+            </div>
+        </section>
+        <!-- ShowItems -->
+        <section id="CardShowItems" class="container-fluid card-panel hiden white-box-shadow rounded d-flex justify-content-center">
+            <div class="col-10 pt-5 mb-4 row">
+                <div class="h2 mb-4 row">Gestionar Items</div>
+                <table class="table" id="itemcontent">
+                    <tr><th scope="col">Name</th><th scope="col">Imgs</th><th scope="col">Updated</th><th>Visibilitat</th><th></th></tr>
                 </table>
             </div>
         </section>
@@ -67,6 +76,7 @@
                 <div class="h1 mt-5 mb-4 offset-1">Estadístiques</div>
                 <div id="CardStatsContent">
                     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+                    <span class="ms-5 h7">Clicks X Categoria</span>
                     <div id="piechart" class="mb-5"></div>
                     <span class="ms-5 h7">Usuari / Items X Clicks</span>
                     <div id="barchart_material"></div>
@@ -95,6 +105,38 @@
         <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Tanca</button>
         @csrf
         <button type="button" class="btn btn-outline-danger send-category-changes" data-bs-dismiss="modal">Cambiar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal ConfirmItem -->
+<div class="modal" id="ChangeItem" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="ChangeItemLabel">Confirmació de Canvis</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">Al desactivar una categoria també es desactivaran els seus ítems</div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Tanca</button>
+        <button type="button" class="btn btn-outline-danger send-item-changes" data-bs-dismiss="modal">Cambiar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal ConfirmUser -->
+<div class="modal" id="ChangeUser" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="ChangeUserLabel">Confirmació de Canvis</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">Al desactivar un usuari també es desactivaran els seus ítems</div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Tanca</button>
+        <button type="button" class="btn btn-outline-danger send-user-changes" data-bs-dismiss="modal">Cambiar</button>
       </div>
     </div>
   </div>

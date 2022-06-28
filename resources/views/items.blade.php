@@ -2,7 +2,7 @@
 
 @section('body')
 <div class="container-flex row">
-    <ol class="list-group col-2 mt-5 ms-5">
+    <ol class="list-group col-10 col-lg-2 mt-5 ms-5">
         @if (isset($id_category))
         <a class="fw-bold list-group-item list-group-item-action d-flex justify-content-between align-items-start" href="/items">
             <span class="w-100 text-center">Tots els productes</span>

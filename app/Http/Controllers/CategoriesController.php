@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\categories;
 use App\Models\items;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\DB;  
+use Illuminate\Support\Facades\Auth;
 
 class CategoriesController extends Controller
 {
@@ -16,7 +17,7 @@ class CategoriesController extends Controller
      */
     public function index()
     {
-        return categories::all();
+        return categories::where('state', '0')->get();
     }
 
     /**
@@ -55,6 +56,7 @@ class CategoriesController extends Controller
      */
     public function show(categories $category)
     {
+        if ($category->state == 0 || Auth::user()->state == 3){
         categories::where('id', $category->id)->update(array('views' => $category->views+1));
         return view('items', [
             'items' => $category->items->where('state', '0'),
@@ -64,6 +66,9 @@ class CategoriesController extends Controller
                             ->groupBy('items.id_category', 'categories.name')
                             ->get(),
             'id_category' => $category->id]);
+        }else{
+            return redirect('/');
+        }
     }
 
     /**
@@ -97,8 +102,9 @@ class CategoriesController extends Controller
      * @param  \App\Models\categories  $category
      * @return \Illuminate\Http\Response
      */
-    public function destroy(categories $category)
-    {
-        //
-    }
+    // public function destroy(categories $category)
+    // {
+    //     //
+    // }
+
 }

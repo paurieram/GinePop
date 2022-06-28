@@ -70,4 +70,8 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         $this->notify(new ResetPaswordNotification($token));
     }
+
+    public function items () {
+        return $this->hasMany(items::class, 'id_seller', 'id');
+    }
 }
