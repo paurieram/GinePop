@@ -171,7 +171,7 @@ $('.send-user-changes').on('click', function () {
             url: "/allitems",
             dataType: "json",
             success: function (response) {
-        //         if (itemlen < response.length){
+                if (itemlen < response.length){
         //             itemlen = response.length;
         //             htm = '';
         //             response.forEach(category => {
@@ -213,7 +213,7 @@ $('.send-user-changes').on('click', function () {
         //                     }
         //                 });
         //             });
-        //         }
+                }
             }
         });
     });
