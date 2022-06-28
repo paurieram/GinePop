@@ -55,6 +55,9 @@ Route::middleware([
 ])->group(function () {
     Route::put('/user/{id}', function($id, Request $request){
         if ($request->op == 'st'){
+            if ($request->state == 2){
+                items::where('id_seller', $id)->update(array('state' => '2'));
+            }
             user::where('id', $id)->update(['state'=> $request->state]);
             return ['success' => 1];
         }

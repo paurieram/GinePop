@@ -2,6 +2,7 @@
 
 @section('body')
 <div class="row">
+    <script script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="/js/panel.js"></script>
     <div class="col-lg-2 offset-lg-1 col-md-3 offset-md-1 col-4 offset-1 my-5">
         <div class="col-lg-12 col-md-12 col-12">
@@ -57,7 +58,7 @@
             <div class="col-10 pt-5 mb-4 row">
                 <div class="h2 mb-4 row">Gestionar Items</div>
                 <table class="table" id="itemcontent">
-                    <tr><th scope="col">Name</th><th scope="col">Imgs</th><th scope="col">Updated</th><th>Visibilitat</th><th></th></tr>
+                    <tr><th scope="col">Name (passar per sobre per descripcio)</th><th scope="col">Imgs</th><th scope="col">Updated</th><th>Visibilitat</th><th></th></tr>
                 </table>
             </div>
         </section>
@@ -117,7 +118,7 @@
         <h5 class="modal-title" id="ChangeItemLabel">Confirmació de Canvis</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-body">Al desactivar una categoria també es desactivaran els seus ítems</div>
+      <div class="modal-body">Al desactivar un item no es pot tornar a activar</div>
       <div class="modal-footer">
         <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Tanca</button>
         <button type="button" class="btn btn-outline-danger send-item-changes" data-bs-dismiss="modal">Cambiar</button>

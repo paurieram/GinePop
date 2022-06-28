@@ -3,6 +3,7 @@ let userlen = 0;
 let categorydata = {};
 let usrupdate = 0;
 let itemlen = 0;
+let itemupdate = 0;
 $(function () {
     function reset() {
         $('.mv-left').removeClass('fixed-left');
@@ -83,13 +84,12 @@ $(function () {
 function saveUsersEvent() {
     $('.auto-user-save').on('change', function () {
         usrupdate = $(this).attr('id');
-        $('#modal-body').text('show');
         $('#ChangeUser').modal('show');
     });
 }
 $('.send-user-changes').on('click', function () {
     $.ajax({
-        type: "put",
+        type: "post",
         url: "/user/"+usrupdate,
         data: {'id': usrupdate, 'state': $('#'+usrupdate+' option:selected').val(),'op': 'st', '_method': 'PUT', '_token': $('#CardCreateCategory > div:nth-child(1) > form:nth-child(2) > input:nth-child(1)').val()},
         dataType: "json",
@@ -172,47 +172,49 @@ $('.send-user-changes').on('click', function () {
             dataType: "json",
             success: function (response) {
                 if (itemlen < response.length){
-        //             itemlen = response.length;
-        //             htm = '';
-        //             response.forEach(category => {
-        //                 if (category.updated_at != null){
-        //                     category.created_at = new Date(category.updated_at).toLocaleDateString("es-ES");
-        //                 }else{
-        //                     category.created_at = new Date(category.created_at).toLocaleDateString("es-ES");
-        //                 }
-        //                 htm += '<tr><th scope="row">'+category.id+'</th><td>'+category.name+'</td><td><a href="'+category.image+'" class="text-primary" target="_blank">Link</a></td><td>'+category.created_at+'</td><td>';
-        //                 if (category.state == 1){
-        //                     htm += '<select class="customimput" id="s'+category.id+'"><option value="0">activat</option><option value="1" selected>desactivat</option></select></td><td><a id="'+category.id+'" class="btn btn-outline-secondary save-category-changes" data-bs-toggle="modal" data-bs-target="#ChangeCategory">Guardar</a></td></tr>';
-        //                 }else{
-        //                     htm += '<select class="customimput" id="s'+category.id+'"><option value="0" selected>activat</option><option value="1">desactivat</option></select></td><td><a id="'+category.id+'" class="btn btn-outline-secondary save-category-changes" data-bs-toggle="modal" data-bs-target="#ChangeCategory">Guardar</a></td></tr>';
-        //                 }
-        //             });
-        //             $('#categorycontent').append(htm);
-        //             /**
-        //              * Create category update event
-        //              */
-        //             $('.save-category-changes').on('click', function () {
-        //                 categorydata = {'_method': 'PUT','_token': $('#ChangeCategory > div:nth-child(1) > div:nth-child(1) > div:nth-child(3) > input:nth-child(2)').val(), 'id': $(this).attr('id'), 'state': $('#s'+$(this).attr("id")+' option:selected').val()};
-        //             });
-        //             /** */
-        //              * Create category save event
-        //              */
-        //             $('.send-category-changes').on('click', function () {
-        //                 /**
-        //                  *  Send data to db
-        //                  */
-        //                 $.ajax({
-        //                     type: "post",
-        //                     url: "/categories/"+categorydata.id,
-        //                     data: categorydata,
-        //                     dataType: "text",
-        //                     success: function () {
-        //                         categorydata = {};
-        //                         $('#error').show().fadeOut(10000);
-        //                         $('#inner-message').text('Categoria actualitzada correctament!');
-        //                     }
-        //                 });
-        //             });
+                    itemlen = response.length;
+                    htm = '';
+                    response.forEach(item => {
+                        if (item.updated_at != null){
+                            item.date = new Date(item.updated_at).toLocaleDateString("es-ES");
+                        }else{
+                            item.date = new Date(item.created_at).toLocaleDateString("es-ES");
+                        }
+                        htm += '<tr><td scope="row" title="'+item.description+'">'+item.name+'</td>';
+                        htm += '<td><div class="dropdown dropend"><a class="btn btn-secondary dropdown-toggle customimput" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Imgs</a><ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">';
+                        item.imatges.forEach(img => {
+                            htm += '<li><a class="dropdown-item" href="'+img.url+'" target="_blank"><img src="'+img.url+'" alt="'+img.id+'" height="100"></a></li>';
+                        });
+                        htm += '</ul></div></td><td>'+item.date+'</td>';
+                        if (item.state == 0){
+                            htm += '<td><span class="text-success">Actiu</span>, <span class="text-danger cursor-pointer save-item-changes" id="'+item.id+'">Desactivar</span></td>';
+                        }else if(item.state == 1){
+                            htm += '<td class="text-primary">Venut</td>';
+                        }else if(item.state == 2){
+                            htm += '<td class="text-danger">Desactivat per l\'admin</td>';
+                        }else if(item.state == 3){
+                            htm += '<td class="text-muted">Expirat</td>';
+                        }else if(item.state == 4){
+                            htm += '<td class="text-warning">Esborrat per l\'usuari</td>';
+                        }
+                    });
+                    $('#itemcontent').append(htm);
+                    $('.save-item-changes').on('click', function () {
+                        itemupdate = $(this).attr('id');
+                        $('#ChangeItem').modal('show');
+                    });
+                    $('.send-item-changes').on('click', function () {
+                        $.ajax({
+                            type: "post",
+                            url: "/items/"+itemupdate,
+                            data: {'id': itemupdate, 'state': '2','op': 'rq', '_method': 'PUT', '_token': $('#CardCreateCategory > div:nth-child(1) > form:nth-child(2) > input:nth-child(1)').val()},
+                            dataType: "json",
+                            success: function (response) {
+                                $('#inner-message').text('Item actualitzat correctament!');
+                                $('#error').show().fadeOut(10000);
+                            }
+                        });
+                    });
                 }
             }
         });
