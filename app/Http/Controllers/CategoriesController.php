@@ -15,9 +15,12 @@ class CategoriesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return categories::where('state', '0')->get();
+        if($request->ajax()){
+            return categories::where('state', '0')->get();
+        }
+        return redirect('/');
     }
 
     /**

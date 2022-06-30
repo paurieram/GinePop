@@ -20,7 +20,7 @@ $(function () {
         $.ajax({
             type: "post",
             url: "/items/"+$('#seller').attr('id_item'),
-            data: {'id': $('#seller').attr('id_item'),'state': 1,'_method': 'PUT','_token': $('#seller > input:nth-child(1)').val(),'op': 'rq,'},
+            data: {'id': $('#seller').attr('id_item'),'state': 1,'_method': 'PUT','_token': $('#seller > input:nth-child(1)').val(),'op': 'rq'},
             dataType: "json",
             success: function (response) {
                 if (response.success == 1){
@@ -29,9 +29,34 @@ $(function () {
             }
         });
     });
-    
+    $('#editprofile').on('click', function () {
+        if ($('#descriptionm').text() != "No s'ha proporcionat informació"){
+            $('#descriptionf').text($('#descriptionm').text());
+        }
+        $('#descriptionm').hide();
+        if ($('#instagramm').text() != '---'){
+            $('#instagramf').val($('#instagramm').text());
+        }
+        $('#instagramm').hide();
+        if ($('#whatsappm').text() != '---'){
+            $('#whatsappf').val($('#whatsappm').text());
+        }
+        $('#whatsappm').hide();
+        if ($('#o_contactm').text() != '---'){
+            $('#o_contactf').val($('#o_contactm').text());
+        }
+        $('#o_contactm').hide();
+        $('.edit-mini').removeClass('hidden');
+        $('.edit-mini').removeClass('hiden');
+        $('#editprofile').hide();
+    });
+    $('#cancelprofile').on('click', function () {
+        $('.edit-mini').addClass('hidden');
+        $('.edit-mini').addClass('hiden');
+        $('#editprofile').show();
+        $('#o_contactm').show();
+        $('#descriptionm').show();
+        $('#whatsappm').show();
+        $('#instagramm').show();
+    });
 });
-function succes(){
-    $('#inner-message').text($('#succont').text());
-    $('#error').show().delay(5000).fadeOut(5000);
-}

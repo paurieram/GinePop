@@ -28,7 +28,9 @@ class AddMoreFieldsToUsersTable extends Migration
                 'password' => '$2y$10$BFpXSg4b4UFYfMeCZ1L4jugMpgeKTqYd8OAiGX7JiNkwX4Wb08kZ2',
                 'surname' => 'admin',
                 'state' => '3',
-                'email_verified_at' => '2022-01-01'
+                'email_verified_at' => '2022-01-01',
+                'profile_photo_path' => '/img/default/admin.jpg',
+                'description' => 'Administrador principal de l\'aplicacció'
             )   
         );
         DB::table('categories')->insert([

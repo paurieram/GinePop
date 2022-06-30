@@ -58,7 +58,8 @@ class ItemsController extends Controller
             $ruta = $request->file('url'.$i)->storePublicly('img/productes', 'public');
             imgs::create(["url" => "/".$ruta, "id_item" => $item->id]);
         }
-        return redirect('/items');
+        
+        return redirect('/items/'.$item->id)->with(['cont' => 1]);
     }
 
     /**
@@ -88,7 +89,7 @@ class ItemsController extends Controller
             $item->usr = $usr[0]->name;
             $item->sold = items::where('id_seller', $item->id_seller)->where('state', '0')->count();
             $item->name = items::where('id', $item->id)->where('state', '0')->get('name')[0]->name;
-            return view('items-view', ['item' => $item, 'imatges' => imgs::all(), 'user'=> Auth::user(),'categories'=>categories::where('state', 0)->get()]);
+            return view('items-view', ['item' => $item, 'imatges' => imgs::all(), 'user'=> Auth::user(),'categories'=>categories::where('state', 0)->get(),'usr'=>user::where('id', $item->id_seller)->get()[0]]);
         }else{
             return redirect('/');
         }

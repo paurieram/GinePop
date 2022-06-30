@@ -20,9 +20,9 @@
                             <button id="edit" class="ms-auto btn btn-sm btn-outline-primary my-auto" data-bs-toggle="modal" data-bs-target="#manageModal"><b>Editar</b></button>
                             <button id="delete" class="ms-2 btn btn-sm btn-outline-danger my-auto"><b>Esborrar</b></button>
                             <button id="sold" class="ms-2 btn btn-sm btn-outline-success my-auto"><b>Venut!</b></button>
-                            <button class="ms-2 btn btn-sm my-auto" data-bs-toggle="modal" data-bs-target="#contactModal">Contacte</button>
+                            <button class="ms-2 btn btn-sm my-auto" data-bs-toggle="modal" data-bs-target="#contactModal">Perfil</button>
                             @elseif (isset($user))
-                            <button class="ms-auto btn btn-sm my-auto" data-bs-toggle="modal" data-bs-target="#contactModal">Contacte</button>
+                            <button class="ms-auto btn btn-sm my-auto" data-bs-toggle="modal" data-bs-target="#contactModal">Perfil</button>
                             @endif
                         </div>
                         <div class="d-flex justify-content-center bg-white">
@@ -55,22 +55,75 @@
             </div>
         </div>
     </div>
+    <!-- alert -->
+    <div class="ms-auto">
+        <div style="padding: 5px; display: none;" id="error">
+            <div id="inner-message" class="alert alert-warning fixed-top-right" role="alert"></div>
+        </div>
+    </div>
+    @if (session('cont') && ($user->id == $item->id_seller))
+    <script>
+        $('#inner-message').text('Et recomanem que actualitzis les dades de contacte!');
+        $('#error').show().delay(6000).fadeOut(1000);
+    </script>
+    @endif
     <!-- Contact Modal -->
     @if (isset($user))
     <div class="modal" id="contactModal" tabindex="-1" aria-labelledby="contactModalLabel" aria-hidden="true">
         <div class="modal-dialog  modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="contactModalLabel">Contacte</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <h5 class="modal-title" id="contactModalLabel">Perfil</h5>
+                    @if(isset($user) && $user->id == $item->id_seller)
+                    <button id="editprofile" type="button" class="btn btn-outline-success">Editar</button>
+                    <button id="cancelprofile" type="button" class="btn btn-outline-success hidden edit-mini">Cancel·lar</button>
+                    @endif
                 </div>
-                <div class="modal-body">
-                    <div>Instagram: {{ $user->instagram }}</div><br>
-                    <div>Whatsapp: {{ $user->whatsapp }}</div><br>
-                    <div>Opcional: {{ $user->o_contact }}</div>
+                <div class="modal-body container-fluid">
+                    <form action="/user/editprofile" class="row" method="post" enctype="multipart/form-data">
+                        @method('PUT')
+                        @csrf
+                        <div class="col-6">
+                            <img src="{{ $usr->profile_photo_path }}" alt="Perfil" class="avatar-user ms-3">
+                            <input type="file" name="profile_photo_path" class="hidden edit-mini form-control mt-1">
+                        </div>
+                        <div class="col-6">
+                            <div class="h3"><b>{{ $usr->name }}</b></div>
+                            <hr>
+                            <textarea id="descriptionf" class="form-control customshadow edit-mini hidden" name="description" ></textarea>
+                            @if ($usr->description == null)
+                            <div id="descriptionm">No s'ha proporcionat informació</div>
+                            @else
+                            <div id="descriptionm" class="my-2">{{ $usr->description }}</div>
+                            @endif
+                            <hr>
+                            <div class="h6 mt-2"><b>Email de contacte</b></div>
+                            <div class="mb-2">{{ $usr->email }}</div>
+                            <hr>
+                            <div class="h6 mt-2"><b>Altres vies de contacte</b></div>
+                            @if($usr->instagram == null)
+                            <div>Instagram: <input class="customimput form-control customshadow hiden edit-mini" id="instagramf" type="text" name="instagram" value=""><span id="instagramm">---</span></div>
+                            @else
+                            <div>Instagram: <input class="customimput form-control customshadow hiden edit-mini" id="instagramf" type="text" name="instagram" value=""><span id="instagramm">{{ $usr->instagram }}</span></div>
+                            @endif
+                            @if($usr->whatsapp == null)
+                            <div>Whatsapp: <input class="customimput form-control customshadow hiden edit-mini" id="whatsappf" type="number" name="whatsapp" value=""><span id="whatsappm">---</span></div>
+                            @else
+                            <div>Whatsapp: <input class="customimput form-control customshadow hiden edit-mini" id="whatsappf" type="number" name="whatsapp" value=""><span id="whatsappm">{{ $usr->whatsapp }}</span></div>
+                            @endif
+                            @if($usr->o_contact == null)
+                            <div>Opcional: <input class="customimput form-control customshadow hiden edit-mini" id="o_contactf" type="text" name="o_contact" value=""><span id="o_contactm">---</span></div>
+                            @else
+                            <div>Opcional: <input class="customimput form-control customshadow hiden edit-mini" id="o_contactf" type="text" name="o_contact" value=""><span id="o_contactm">{{ $usr->o_contact }}</span></div>
+                            @endif
+                            <div class="flex items-center justify-end mt-2 hidden edit-mini">
+                                <input type="submit" class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring focus:ring-gray-300 disabled:opacity-25 transition ml-4 nav-link btn btn-outline-success" value="Enviar">
+                            </div>
+                        </div>
+                    </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring focus:ring-gray-300 disabled:opacity-25 transition ml-4 nav-link btn btn-outline-success" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring focus:ring-gray-300 disabled:opacity-25 transition ml-4 nav-link btn btn-outline-success" data-bs-dismiss="modal">Tancar</button>
                 </div>
             </div>
         </div>
@@ -141,7 +194,7 @@
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring focus:ring-gray-300 disabled:opacity-25 transition ml-4 nav-link btn btn-outline-success" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring focus:ring-gray-300 disabled:opacity-25 transition ml-4 nav-link btn btn-outline-success" data-bs-dismiss="modal">Tancar</button>
                 </div>
             </div>
         </div>

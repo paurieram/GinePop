@@ -2455,3 +2455,9 @@ body {
   min-height: 1200px;
   width: 100%;
 }
+.avatar-user {
+  border-radius: 50% !important;
+  max-width: 190px;
+  height: 190px;
+  object-fit: cover;
+}

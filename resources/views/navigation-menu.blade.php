@@ -68,13 +68,13 @@
                             <div class="border-t border-gray-100"></div>
 
                             <!-- Account Management -->
-                            <div class="block px-4 py-2 text-xs text-gray-400">
+                            <!-- <div class="block px-4 py-2 text-xs text-gray-400">
                                 {{ __('Compte') }}
-                            </div>
+                            </div> -->
 
-                            <x-jet-dropdown-link href="{{ route('profile.show') }}">
+                            <!-- <x-jet-dropdown-link href="{{ route('profile.show') }}">
                                 {{ __('Perfil') }}
-                            </x-jet-dropdown-link>
+                            </x-jet-dropdown-link> -->
 
                             @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
                             <x-jet-dropdown-link href="{{ route('api-tokens.index') }}">
@@ -152,12 +152,12 @@
                     {{ __('Els meus productes') }} 
                 </x-jet-dropdown-link>
                 <!-- Account Management -->
-                <div class="block px-4 py-2 text-xs text-gray-400">
+                <!-- <div class="block px-4 py-2 text-xs text-gray-400">
                     {{ __('Compte') }}
-                </div>
-                <x-jet-responsive-nav-link href="{{ route('profile.show') }}" :active="request()->routeIs('profile.show')">
+                </div> -->
+                <!-- <x-jet-responsive-nav-link href="{{ route('profile.show') }}" :active="request()->routeIs('profile.show')">
                     {{ __('Perfil') }}
-                </x-jet-responsive-nav-link>
+                </x-jet-responsive-nav-link> -->
 
                 @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
                 <x-jet-responsive-nav-link href="{{ route('api-tokens.index') }}" :active="request()->routeIs('api-tokens.index')">
