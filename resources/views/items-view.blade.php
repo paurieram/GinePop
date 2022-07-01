@@ -63,8 +63,11 @@
     </div>
     @if (session('cont') && ($user->id == $item->id_seller))
     <script>
-        $('#inner-message').text('Et recomanem que actualitzis les dades de contacte!');
+        $('#inner-message').html('Et recomanem que actualitzis les dades de contacte! Accedeix del teu <u class="perfil cursor-pointer"><b>perfil</b></u>');
         $('#error').show().delay(6000).fadeOut(1000);
+        $('.perfil').on('click', function () {
+            $('#contactModal').modal('show');
+        });
     </script>
     @endif
     <!-- Contact Modal -->

@@ -6,33 +6,33 @@
     <script src="/js/panel.js"></script>
     <div class="col-lg-2 offset-lg-1 col-md-3 offset-md-1 col-4 offset-1 my-5">
         <div class="col-lg-12 col-md-12 col-12">
-            <section id="BtnCreateCategory" class="white-box-shadow rounded mb-4 mv-left p-2">
+            <section id="BtnCreateCategory" class="rounded mb-4 mv-left p-2">
                 <a class="h4">Crear Categoria</a>
             </section>
-            <section id="BtnShowCategories" class="white-box-shadow rounded mb-4 mv-left p-2">
+            <section id="BtnShowCategories" class="rounded mb-4 mv-left p-2">
                 <a class="h4">Gestionar Categories</a>
             </section>
-            <!-- <section id="BtnCreateUser" class="white-box-shadow rounded mb-4 mv-left p-2">
+            <!-- <section id="BtnCreateUser" class="rounded mb-4 mv-left p-2">
                 <a class="h4">Crear Usuari</a>
             </section> -->
-            <section id="BtnShowUsers" class="white-box-shadow rounded mb-4 mv-left p-2">
+            <section id="BtnShowUsers" class="rounded mb-4 mv-left p-2">
                 <a class="h4">Gestionar Usuaris</a>
             </section>
-            <section id="BtnShowItems" class="white-box-shadow rounded mb-4 mv-left p-2">
+            <section id="BtnShowItems" class="rounded mb-4 mv-left p-2">
                 <a class="h4">Gestionar Items</a>
             </section>
-            <section id="BtnStats" class="white-box-shadow rounded mb-4 mv-left p-2">
+            <section id="BtnStats" class="rounded mb-4 mv-left p-2">
                 <a class="h4">Estadístiques</a>
             </section>
-            <!-- <section id="BtnShowCategories" class="white-box-shadow rounded mb-4 mv-left p-2">
+            <!-- <section id="BtnShowCategories" class="rounded mb-4 mv-left p-2">
                 <a class="h4">Logs</a>
             </section> -->
         </div>
     </div>  
-    <div class="col-lg-6 offset-lg-1 col-md-6 offset-md-1 col-5 offset-1 my-5">
+    <div class="col-lg-8 offset-lg-0 col-md-8 offset-md-0 col-8 offset-0 my-5">
         <!-- CreateCategory -->
-        <section id="CardCreateCategory" class="card-panel hiden content white-box-shadow rounded d-flex justify-content-center">
-            <div class="col-6 pt-5">
+        <section id="CardCreateCategory" class="card-panel hiden content rounded d-flex">
+            <div class="col-10">
                 <div class="h2 mt-5 mb-4">Crear Categoria</div>
                 <form action="{{ route('categories.store') }}" method="post" enctype="multipart/form-data">
                     @csrf
@@ -45,7 +45,7 @@
             </div>
         </section>
         <!-- ShowCategory -->
-        <section id="CardShowCategory" class="container-fluid card-panel hiden white-box-shadow rounded d-flex justify-content-center">
+        <section id="CardShowCategory" class="container-fluid card-panel hiden  rounded d-flex">
             <div class="col-10 pt-5 mb-4 row">
                 <div class="h2 mb-4 row">Gestionar Categories</div>
                 <table class="table" id="categorycontent">
@@ -54,7 +54,7 @@
             </div>
         </section>
         <!-- ShowItems -->
-        <section id="CardShowItems" class="container-fluid card-panel hiden white-box-shadow rounded d-flex justify-content-center">
+        <section id="CardShowItems" class="container-fluid card-panel hiden  rounded d-flex">
             <div class="col-10 pt-5 mb-4 row">
                 <div class="h2 mb-4 row">Gestionar Items</div>
                 <table class="table" id="itemcontent">
@@ -63,7 +63,7 @@
             </div>
         </section>
         <!-- ShowUsers -->
-        <section id="CardShowUsers" class="container-fluid card-panel hiden white-box-shadow rounded d-flex justify-content-center">
+        <section id="CardShowUsers" class="container-fluid card-panel hiden rounded d-flex">
             <div class="col-10 pt-5 mb-4 row">
                 <div class="h2 mb-4 row">Gestionar Usuaris</div>
                 <table class="table" id="usercontent">
@@ -72,9 +72,9 @@
             </div>
         </section>
         <!-- CardStats -->
-        <section id="CardStats" class="card-panel hiden stats white-box-shadow rounded d-flex justify-content-center">
+        <section id="CardStats" class="card-panel hiden stats rounded d-flex">
             <div class="col-12 pt-5">
-                <div class="h1 mt-5 mb-4 offset-1">Estadístiques</div>
+                <div class="h2 mb-4">Estadístiques</div>
                 <div id="CardStatsContent">
                     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
                     <span class="ms-5 h7">Clicks X Categoria</span>

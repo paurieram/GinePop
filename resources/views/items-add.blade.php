@@ -3,7 +3,7 @@
 @section('body')
 <div class="col-lg-4 offset-lg-4 col-md-8 offset-md-2 col-10 offset-1 my-5" style="border-radius: 10px; background-color: white; box-shadow: 0px 0px 5px #000;">
     <h1 class="px-5 pt-4 h1"><b>Afegir producte</b></h1>
-    <form action="{{ route('items.store') }}" runat="server" method="post" class="form-floating px-5 pt-4" enctype="multipart/form-data">
+    <form id="newitem" action="{{ route('items.store') }}" runat="server" method="post" class="form-floating px-5 pt-4" enctype="multipart/form-data">
         @csrf
         <div class="row g-1">
             <div class="form-floating mb-3 col">
@@ -17,12 +17,18 @@
         </div>
         <div class="form-floating mb-3">
             <select class="form-select customshadow" id="id_category" name="id_category" aria-label="Floating label select example">
-                <option selected>Selecciona categoria</option>
+                <option selected value="-">Selecciona categoria</option>
                     @foreach ($categories as $category)
                         <option value="{{$category->id}}">{{$category->name}}</option>
                     @endforeach
             </select>
             <label for="id_category">Categoria</label>
+        </div>
+        <!-- alert categorty -->
+        <div class="ms-auto">
+            <div style="padding: 5px; display: none;" id="errorc">
+                <div id="inner-messagec" class="alert alert-danger" role="alert">Has de seleccionar una categoria</div>
+            </div>
         </div>
         <div class="form-floating mb-3">
             <textarea id="description" class="form-control customshadow" name="description" required autofocus autocomplete="description"></textarea>
@@ -40,6 +46,12 @@
             <input accept="image/*" class="imgInp form-control" type='file' name="url7" id="imgInp7" style="visibility:hidden; position:absolute;" />
         </div>
         <div id="blah" style="background-color: #e4ebe6; border-radius:10px;" class="my-3">
+        </div>
+        <!-- alert img -->
+        <div class="ms-auto">
+            <div style="padding: 5px; display: none;" id="errori">
+                <div id="inner-messagei" class="alert alert-danger" role="alert">Has d'introduir, com a minim, una imatge</div>
+            </div>
         </div>
         <div class="form-floating mb-3 col">
             <x-jet-input id="location" class="form-control customshadow" type="text" name="location" :value="old('location')" required autofocus autocomplete="location" />

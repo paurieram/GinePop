@@ -2210,6 +2210,7 @@ ul li a .fa-brands,ul li a .fa-solid {
 }
 ul li a i {
   font-size: 1.25em;
+  transition: 0.5s;
 } 
 ul li a:hover i{ 
   transform: translateY(-20%) !important; 
