@@ -6,7 +6,7 @@
 
         <div class="mb-4 text-sm text-gray-600">
             {{ __("Gràcies per registrar-te! Abans de començar, podries confirmar el teu correu electrònic clicant en l'enllaç que t'acabem d'enviar? Si no has rebut el correu electrònic, t'enviarem un altre.") }}
-        </div>
+            <b><u><a href='https://mail.google.com' target='_blank'>Accedir a Gmail</a></u></b></div>
 
         @if (session('status') == 'verification-link-sent')
             <div class="mb-4 font-medium text-sm text-green-600">

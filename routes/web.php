@@ -7,7 +7,7 @@ use App\Http\Controllers\ItemsController;
 use App\Http\Controllers\CategoriesController;
 use Illuminate\Http\Request;
 use App\Models\categories;
-use App\Models\user;
+use App\Models\User;
 use App\Models\items;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -30,7 +30,7 @@ Route::put('/user/editprofile', function (Request $request){
             $ruta = $request->file('profile_photo_path')->storePublicly('img/profile', 'public');
         }
         $data->profile_photo_path = '/'.$ruta;
-        $oldimg = user::where('id', Auth::id())->get()[0]->profile_photo_path;
+        $oldimg = User::where('id', Auth::id())->get()[0]->profile_photo_path;
         if ($oldimg != '/img/default/default-user.jpg'){
             File::delete(public_path($oldimg));
         }
@@ -39,7 +39,7 @@ Route::put('/user/editprofile', function (Request $request){
     $data->instagram = $request->instagram;
     $data->whatsapp = $request->whatsapp;
     $data->o_contact = $request->o_contact;
-    user::where('id', Auth::id())->update((Array)$data);
+    User::where('id', Auth::id())->update((Array)$data);
     return redirect('/items');
 });
 
@@ -103,7 +103,7 @@ Route::middleware([
                 if ($request->state == 2){
                     items::where('id_seller', $id)->update(array('state' => '2'));
                 }
-                user::where('id', $id)->update(['state'=> $request->state]);
+                User::where('id', $id)->update(['state'=> $request->state]);
                 return ['success' => 1];
             }
         }
@@ -141,7 +141,7 @@ Route::middleware([
     Route::get('/usrs', function (Request $request) {
         if($request->ajax()){
             if(Auth::user()->state === 3) {
-                return ['data'=> user::all(), 'user'=> Auth::id()];
+                return ['data'=> User::all(), 'user'=> Auth::id()];
             }
         }
         return redirect('/');

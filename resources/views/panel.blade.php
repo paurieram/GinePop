@@ -12,9 +12,6 @@
             <section id="BtnShowCategories" class="rounded mb-4 mv-left p-2">
                 <a class="h4">Gestionar Categories</a>
             </section>
-            <!-- <section id="BtnCreateUser" class="rounded mb-4 mv-left p-2">
-                <a class="h4">Crear Usuari</a>
-            </section> -->
             <section id="BtnShowUsers" class="rounded mb-4 mv-left p-2">
                 <a class="h4">Gestionar Usuaris</a>
             </section>
