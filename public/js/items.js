@@ -59,4 +59,7 @@ $(function () {
         $('#whatsappm').show();
         $('#instagramm').show();
     });
+    $('#mini-avatar-input').on('change', function () {
+        $('#mini-avatar').attr('src', URL.createObjectURL(this.files[0]));
+    });
 });

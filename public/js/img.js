@@ -4,7 +4,7 @@ for (element of images) {
     element.onchange = evt => {
         var $fileUpload = $("input[type='file']");
         if (parseInt($fileUpload.get(0).files.length)>8){
-            alert("You can only upload a maximum of 8 files");
+            alert("Nomes pots pujar fins a 8 fitxers");
             return;
         }
         const [files] = evt.target.files;

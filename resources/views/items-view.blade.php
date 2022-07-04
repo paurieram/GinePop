@@ -87,8 +87,8 @@
                         @method('PUT')
                         @csrf
                         <div class="col-6">
-                            <img src="{{ $usr->profile_photo_path }}" alt="Perfil" class="avatar-user ms-3">
-                            <input type="file" name="profile_photo_path" class="hidden edit-mini form-control mt-1">
+                            <img id="mini-avatar" src="{{ $usr->profile_photo_path }}" alt="Perfil" class="avatar-user ms-3">
+                            <input id="mini-avatar-input" type="file" name="profile_photo_path" class="hidden edit-mini form-control mt-1">
                         </div>
                         <div class="col-6">
                             <div class="h3"><b>{{ $usr->name }}</b></div>

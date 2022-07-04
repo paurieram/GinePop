@@ -43,7 +43,6 @@ Route::put('/user/editprofile', function (Request $request){
     return redirect('/items');
 });
 
-
 Route::get('/', function () {
     if (!empty(Auth::user())){
         if (Auth::user()->state === 1 || Auth::user()->state === 2 || Auth::user()->state === 4){
