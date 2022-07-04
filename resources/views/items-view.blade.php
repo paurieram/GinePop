@@ -78,8 +78,8 @@
                 <div class="modal-header">
                     <h5 class="modal-title" id="contactModalLabel">Perfil</h5>
                     @if(isset($user) && $user->id == $item->id_seller)
-                    <button id="editprofile" type="button" class="btn btn-outline-success">Editar</button>
-                    <button id="cancelprofile" type="button" class="btn btn-outline-success hidden edit-mini">Cancel·lar</button>
+                    <button type="button" class="btn btn-outline-success editprofile">Editar</button>
+                    <button type="button" class="btn btn-outline-success hidden edit-mini cancelprofile">Cancel·lar</button>
                     @endif
                 </div>
                 <div class="modal-body container-fluid">
@@ -87,17 +87,17 @@
                         @method('PUT')
                         @csrf
                         <div class="col-6">
-                            <img id="mini-avatar" src="{{ $usr->profile_photo_path }}" alt="Perfil" class="avatar-user ms-3">
-                            <input id="mini-avatar-input" type="file" name="profile_photo_path" class="hidden edit-mini form-control mt-1">
+                            <img src="{{ $usr->profile_photo_path }}" alt="Perfil" class="avatar-user ms-3 mini-avatar">
+                            <input type="file" name="profile_photo_path" class="hidden edit-mini form-control mt-1 mini-avatar-input">
                         </div>
                         <div class="col-6">
                             <div class="h3"><b>{{ $usr->name }}</b></div>
                             <hr>
-                            <textarea id="descriptionf" class="form-control customshadow edit-mini hidden" name="description" ></textarea>
+                            <textarea class="form-control customshadow edit-mini hidden descriptionf" name="description" ></textarea>
                             @if ($usr->description == null)
-                            <div id="descriptionm">No s'ha proporcionat informació</div>
+                            <div class="descriptionm">No s'ha proporcionat informació</div>
                             @else
-                            <div id="descriptionm" class="my-2">{{ $usr->description }}</div>
+                            <div class="descriptionm my-2">{{ $usr->description }}</div>
                             @endif
                             <hr>
                             <div class="h6 mt-2"><b>Email de contacte</b></div>
@@ -105,19 +105,19 @@
                             <hr>
                             <div class="h6 mt-2"><b>Altres vies de contacte</b></div>
                             @if($usr->instagram == null)
-                            <div>Instagram: <input class="customimput form-control customshadow hiden edit-mini" id="instagramf" type="text" name="instagram" value=""><span id="instagramm">---</span></div>
+                            <div>Instagram: <input class="customimput form-control customshadow hiden edit-mini instagramf" type="text" name="instagram" value=""><span class="instagramm">---</span></div>
                             @else
-                            <div>Instagram: <input class="customimput form-control customshadow hiden edit-mini" id="instagramf" type="text" name="instagram" value=""><span id="instagramm">{{ $usr->instagram }}</span></div>
+                            <div>Instagram: <input class="customimput form-control customshadow hiden edit-mini instagramf" type="text" name="instagram" value=""><span class="instagramm">{{ $usr->instagram }}</span></div>
                             @endif
                             @if($usr->whatsapp == null)
-                            <div>Whatsapp: <input class="customimput form-control customshadow hiden edit-mini" id="whatsappf" type="number" name="whatsapp" value=""><span id="whatsappm">---</span></div>
+                            <div>Whatsapp: <input class="customimput form-control customshadow hiden edit-mini whatsappf" type="number" name="whatsapp" value=""><span class="whatsappm">---</span></div>
                             @else
-                            <div>Whatsapp: <input class="customimput form-control customshadow hiden edit-mini" id="whatsappf" type="number" name="whatsapp" value=""><span id="whatsappm">{{ $usr->whatsapp }}</span></div>
+                            <div>Whatsapp: <input class="customimput form-control customshadow hiden edit-mini whatsappf" type="number" name="whatsapp" value=""><span class="whatsappm">{{ $usr->whatsapp }}</span></div>
                             @endif
                             @if($usr->o_contact == null)
-                            <div>Opcional: <input class="customimput form-control customshadow hiden edit-mini" id="o_contactf" type="text" name="o_contact" value=""><span id="o_contactm">---</span></div>
+                            <div>Opcional: <input class="customimput form-control customshadow hiden edit-mini o_contactf" type="text" name="o_contact" value=""><span class="o_contactm">---</span></div>
                             @else
-                            <div>Opcional: <input class="customimput form-control customshadow hiden edit-mini" id="o_contactf" type="text" name="o_contact" value=""><span id="o_contactm">{{ $usr->o_contact }}</span></div>
+                            <div>Opcional: <input class="customimput form-control customshadow hiden edit-mini o_contactf" type="text" name="o_contact" value=""><span class="o_contactm">{{ $usr->o_contact }}</span></div>
                             @endif
                             <div class="flex items-center justify-end mt-2 hidden edit-mini">
                                 <input type="submit" class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring focus:ring-gray-300 disabled:opacity-25 transition ml-4 nav-link btn btn-outline-success" value="Enviar">
