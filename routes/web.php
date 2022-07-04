@@ -71,7 +71,7 @@ Route::middleware([
     Route::get('/usersxstate',function(Request $request){
         if($request->ajax()){
             if (Auth::user()->state === 3){
-                $data = ['actius' => User::all()->where('state', '0')->count(), 'des. temporalment' => User::all()->where('state', '1')->count(),
+                $data = ['actius' => User::all()->where('state', '0')->count(), 'destemporalment' => User::all()->where('state', '1')->count(),
                          'desactivats' => User::all()->where('state', '2')->count(), 'administradors' => User::all()->where('state', '3')->count()];
                 return $data;
             }

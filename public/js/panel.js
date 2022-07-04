@@ -222,6 +222,9 @@ $('.send-user-changes').on('click', function () {
     /*
      * Charts
      */
+    /*
+     * categories
+     */
     google.charts.load('current', {'packages':['corechart']});
     google.charts.setOnLoadCallback(drawPieChart);
     function drawPieChart() {
@@ -236,38 +239,109 @@ $('.send-user-changes').on('click', function () {
                     arr.push([category.name, parseInt(category.views)]);
                 });
                 var data = google.visualization.arrayToDataTable(arr);
-                var options = {title: '','width':900,'height':400, pieSliceTextStyle: {color: 'black'},
-                pieSliceText: 'label',};
+                var options = {title: '','width':900,'height':400, pieSliceTextStyle: {color: 'black'}, backgroundColor: '#eceff1',
+                pieSliceText: 'label'};
                 var chart = new google.visualization.PieChart(document.getElementById('piechart'));
                 chart.draw(data, options);
             }
         });
     }
-    // google.charts.load('current', {'packages':['bar']});
-    // google.charts.setOnLoadCallback(drawBarChart);
-    // function drawBarChart() {
-    //     let arr = [];
-    //     $.ajax({
-    //         type: "get",
-    //         url: "/clicks",
-    //         dataType: "json",
-    //         success: function (response) {
-    //             // arr[0] = ['', '',''];
-    //             console.log(response);
-    //             // var data = google.visualization.arrayToDataTable([
-    //             //   ['', '',''],
-    //             //   ['2014', 1000,1020],
-    //             //   ['2015', 1170 ,''],
-    //             //   ['2016', 660,''],
-    //             //   ['2017', 1030,'']
-    //             // ]);
-    //             // var options = {chart: {title: '',},'width':900,'height':400,bars: 'horizontal',vAxis: {textPosition: 'none', title: ''},legend: {position: 'none'},
-    //             // };
-    //             // var chart = new google.charts.Bar(document.getElementById('barchart_material'));
-    //             // chart.draw(data, google.charts.Bar.convertOptions(options));
-    //         }
-    //     });
-    // }
+    /*
+     * Usuaris
+     */
+    google.charts.load('current', {'packages':['bar']});
+    google.charts.setOnLoadCallback(drawBarChart);
+    function drawBarChart() {
+        $.ajax({
+            type: "get",
+            url: "/usersxstate",
+            dataType: "json",
+            success: function (response) {
+                // barsVisualization must be global in our script tag to be able
+                // to get and set selection.
+                var barsVisualization;
+                drawMouseoverVisualization()
+                function drawMouseoverVisualization() {
+                var data = new google.visualization.DataTable();
+                data.addColumn('string', 'Estat');
+                data.addColumn('number', 'Users');
+                data.addRows([
+                    ['actius', response.actius] ,
+                    ['desactivats', response.desactivats],
+                    ['administradors', response.administradors]
+                ]);
+                var options = {
+                    'width':900,
+                    'height':400,
+                    bars: 'horizontal',
+                    legend: { position: "none" },
+                    bar: {groupWidth: "30%"},
+                    backgroundColor: '#eceff1',
+                };
+                barsVisualization = new google.visualization.ColumnChart(document.getElementById('barchart_material'));
+                barsVisualization.draw(data, options);
+                // Add our over/out handlers.
+                google.visualization.events.addListener(barsVisualization, 'onmouseover', barMouseOver);
+                google.visualization.events.addListener(barsVisualization, 'onmouseout', barMouseOut);
+                }
+                function barMouseOver(e) {
+                    barsVisualization.setSelection([e]);
+                }
+                function barMouseOut(e) {
+                    barsVisualization.setSelection([{'row': null, 'column': null}]);
+                }
+            }
+        });
+    }
+    /*
+     * items
+     */
+    google.charts.load('current', {'packages':['bar']});
+    google.charts.setOnLoadCallback(drawBarChart2);
+    function drawBarChart2() {
+        $.ajax({
+            type: "get",
+            url: "/itemsxstate",
+            dataType: "json",
+            success: function (response) {
+                // barsVisualization must be global in our script tag to be able
+                // to get and set selection.
+                var barsVisualization;
+                drawMouseoverVisualization()
+                function drawMouseoverVisualization() {
+                var data = new google.visualization.DataTable();
+                data.addColumn('string', 'Estat');
+                data.addColumn('number', 'Users');
+                data.addRows([
+                    ['actius', response.actius],
+                    ['venuts', response.venuts],
+                    ['desactivats', response.desactivats],
+                    ['caducats', response.caducats],
+                    ['esborrats', response.esborrats]
+                ]);
+                var options = {
+                    'width':900,
+                    'height':400,
+                    bars: 'horizontal',
+                    legend: { position: "none" },
+                    bar: {groupWidth: "30%"},
+                    backgroundColor: '#eceff1',
+                };
+                barsVisualization = new google.visualization.ColumnChart(document.getElementById('barchart_material2'));
+                barsVisualization.draw(data, options);
+                // Add our over/out handlers.
+                google.visualization.events.addListener(barsVisualization, 'onmouseover', barMouseOver);
+                google.visualization.events.addListener(barsVisualization, 'onmouseout', barMouseOut);
+                }
+                function barMouseOver(e) {
+                    barsVisualization.setSelection([e]);
+                }
+                function barMouseOut(e) {
+                    barsVisualization.setSelection([{'row': null, 'column': null}]);
+                }
+            }
+        });
+    }
     /* 
      *  Show create category card
      */

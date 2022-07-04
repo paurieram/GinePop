@@ -26,7 +26,7 @@
     @show
     <footer class="mt-auto container-fluid p-4" style="background-color: #84c236;">
         <div class="row">
-            <div id="links" class="col-6 offset-3 ftrtxt">Desenvolupat per <a href="https://github.com/paurigine" target="_blank" style="color:green; text-decoration: none;">Pau Riera</a>, <a href="https://github.com/rubegine" target="_blank" style="color:green; text-decoration: none;">Ruben Recolons</a> i <a href="https://github.com/joseprecolons" target="_blank" style="color:green; text-decoration: none;">Josep Recolons</a>, alumnes de 2n DAW</div>
+            <div id="links" class="col-6 offset-3 ftrtxt">Desenvolupat per <a href="https://github.com/paurieram" target="_blank" style="color:green; text-decoration: none;">Pau Riera</a>, <a href="https://github.com/rubegine" target="_blank" style="color:green; text-decoration: none;">Ruben Recolons</a> i <a href="https://github.com/joseprecolons" target="_blank" style="color:green; text-decoration: none;">Josep Recolons</a>, alumnes de 2n DAW</div>
             <ul class="social-footer-icons col-3">
                 <li><a href="https://www.ginebro.cat/blog/" target="blank"><i class="fa-solid fa-blog" aria-hidden="true"></i></a></li>
                 <li><a href="https://www.instagram.com/escolaginebro/" target="blank"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a></li>

@@ -79,8 +79,10 @@
                     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
                     <span class="ms-5 h7">Clicks X Categoria</span>
                     <div id="piechart" class="mb-5"></div>
-                    <span class="ms-5 h7">Usuari / Items X Clicks</span>
+                    <span class="ms-5 h7">Usuaris</span>
                     <div id="barchart_material"></div>
+                    <span class="ms-5 h7">Items</span>
+                    <div id="barchart_material2"></div>
                 </div>
             </div>
         </section>
