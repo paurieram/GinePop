@@ -7,23 +7,27 @@
             <div class="row row-cols-lg-1 row-cols-md-1 row-cols-1">
                 <div class="col">
                     <div class="card mb-3 " style="border-radius:10px">
-                        <div class="card-header d-flex">
-                            <div class="card-user-detail">
-                                <span id="seller" id_item="{{ $item->id }}" class="h3 card-title justify-content-start">{{ $item->usr }}@csrf</span>
-                                @if ($item->sold == 1)
-                                <span class="text-muted">{{ $item->sold }} Producte a la venda</span>
-                                @else
-                                <span class="text-muted">{{ $item->sold }} Productes a la venda</span>
+                        <div class="card-header d-flex container-fluid">
+                            <div class="row w-100">
+                                <div class="card-user-detail col-6 col-lg-3">
+                                    <span id="seller" id_item="{{ $item->id }}" class="h3 card-title justify-content-start">{{ $item->usr }}@csrf</span>
+                                    @if ($item->sold == 1)
+                                    <span class="text-muted">{{ $item->sold }} Producte a la venda</span>
+                                    @else
+                                    <span class="text-muted">{{ $item->sold }} Productes a la venda</span>
+                                    @endif
+                                </div>
+                                <div class="col-auto my-auto">
+                                    @if(isset($user) && $user->id == $item->id_seller)
+                                    <button id="edit" class="btn btn-sm btn-outline-primary my-auto" style="margin-left: 8px;" data-bs-toggle="modal" data-bs-target="#manageModal">Editar</button>
+                                    <button id="delete" class="ms-2 btn btn-sm btn-outline-danger my-auto">Esborrar</button>
+                                    <button id="sold" class="ms-2 btn btn-sm btn-outline-success my-auto">Venut!</button>
+                                    <button class="ms-2 btn btn-sm my-auto" data-bs-toggle="modal" data-bs-target="#contactModal">Perfil</button>
+                                    @elseif (isset($user))
+                                    <button class="ms-auto btn btn-sm my-auto" data-bs-toggle="modal" data-bs-target="#contactModal">Perfil</button>
                                 @endif
+                                </div>
                             </div>
-                            @if(isset($user) && $user->id == $item->id_seller)
-                            <button id="edit" class="ms-auto btn btn-sm btn-outline-primary my-auto" data-bs-toggle="modal" data-bs-target="#manageModal"><b>Editar</b></button>
-                            <button id="delete" class="ms-2 btn btn-sm btn-outline-danger my-auto"><b>Esborrar</b></button>
-                            <button id="sold" class="ms-2 btn btn-sm btn-outline-success my-auto"><b>Venut!</b></button>
-                            <button class="ms-2 btn btn-sm my-auto" data-bs-toggle="modal" data-bs-target="#contactModal">Perfil</button>
-                            @elseif (isset($user))
-                            <button class="ms-auto btn btn-sm my-auto" data-bs-toggle="modal" data-bs-target="#contactModal">Perfil</button>
-                            @endif
                         </div>
                         <div class="d-flex justify-content-center bg-white">
                             <!-- Slideshow container -->

@@ -64,7 +64,7 @@
             <div class="col-10 pt-5 mb-4 row">
                 <div class="h2 mb-4 row">Gestionar Usuaris</div>
                 <table class="table" id="usercontent">
-                    <th scope="col">Id</th><th scope="col">Name</th><th scope="col">Email</th><th scope="col">Updated</th><th scope="col">Contact</th><th>Estat</th><th></th>
+                    <th scope="col">Id</th><th scope="col">Name</th><th scope="col">Email</th><th scope="col">Updated</th><th scope="col">Contact</th><th style="min-width: 150px;">Estat</th><th></th>
                 </table>
             </div>
         </section>
