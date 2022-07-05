@@ -4,7 +4,7 @@
 <script src="/js/register.js"></script>
 <div class="col-lg-6 offset-lg-3 col-md-8 offset-md-2 col-10 offset-1 my-5" style="border-radius: 10px; background-color: white; box-shadow: 0px 0px 5px #000;">
 
-    <h1 class="px-5 pt-4 h1"><b>Registre't</b></h1>
+    <h1 class="px-5 pt-4 h1"><b>Registra't</b></h1>
 
     <form id="registerform" method="POST" action="{{ route('register') }}" class="px-5 pt-4">
         @csrf
